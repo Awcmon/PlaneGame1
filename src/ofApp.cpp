@@ -18,6 +18,7 @@
 //ToDo: Implement object pool for bullets and particles
 //RESOLVED?: Fix reliability problems
 //ToDo: Multi-threading for particles?
+//ToDo: Make resource manager return pointers instead, to stop possibly expensive data duplication?
 
 //Testing:
 //ToDo: Test Input class
@@ -35,8 +36,10 @@ void ofApp::setup(){
 	cam.setPosition(ofVec3f(0.0f, 0.0f, 1000));
 	cam.enableOrtho();
 
-	ents.add(new Sprite(rm.getImage("images\\f14.png")), 3);
-	ents.add(new Sprite(rm.getImage("images\\missile.png")), 2);
+	ents.add(new Player(rm.getImage("images\\f14.png"), &input), LAYER_FG_MID);
+
+	//ents.add(new Sprite(rm.getImage("images\\f14.png")), 3);
+	//ents.add(new Sprite(rm.getImage("images\\missile.png")), 2);
 }
 
 //--------------------------------------------------------------
@@ -49,7 +52,6 @@ void ofApp::update(){
 void ofApp::draw(){
 	cam.begin();
 
-	
 	/*
 	ofSetColor(0, 255, 0);
 	ofDrawCircle(glm::vec3(0.0f, 0.0f, 10.0f), 10);
@@ -60,8 +62,6 @@ void ofApp::draw(){
 	ofSetColor(0, 0, 255);
 	ofDrawCircle(input.getMouseWorldPos(), 8);
 	*/
-
-	//rm.getImage("images\\f14.png").draw(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	ents.draw();
 

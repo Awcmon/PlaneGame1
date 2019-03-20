@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "Entity.h"
 
+//Anything that is drawn with an image.
 class Sprite : public Entity
 {
 public:

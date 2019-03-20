@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "Input.h"
 #include "Sprite.h"
+#include "Player.h"
 
 class ofApp : public ofBaseApp{
 

@@ -2,8 +2,16 @@
 
 #include <vector>
 #include <string>
+
 #include "ofMain.h"
 #include "ResourceManager.h"
+
+//Define some basic layers.
+#define LAYER_BG_BOTTOM 0
+#define LAYER_BG_TOP 1
+#define LAYER_FG_BOTTOM 2
+#define LAYER_FG_MID 3
+#define LAYER_FG_TOP 4
 
 class EntitySystem; //class prototype
 
@@ -54,7 +62,7 @@ public:
 
 	void update();
 	void draw();
-	void add(Entity* ent, int layer = 0);
+	void add(Entity* ent, int layer = 0); //the layer determines render order. higher layer has higher priority.
 	void remove(Entity* ent);
 	void clear(); //deallocates (deletes) all entities.
 
