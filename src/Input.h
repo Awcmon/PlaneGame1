@@ -8,10 +8,14 @@ class Input
 	ofVec2f mPos;
 	std::array<bool, 512> keysDown;
 	std::array<bool, 3> mouseButtonsDown;
+	ofCamera* cam;
 public:
 	Input();
 
-	ofVec2f getMousePos();
+	void setCamera(ofCamera* _cam);
+
+	ofVec2f getMouseScreenPos();
+	ofVec2f getMouseWorldPos();
 	bool keyDown(int key);
 	bool keyPressed(int key);
 	bool keyReleased(int key);

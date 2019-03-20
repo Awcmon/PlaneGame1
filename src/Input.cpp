@@ -9,9 +9,20 @@ Input::Input()
 	}
 }
 
-ofVec2f Input::getMousePos()
+void Input::setCamera(ofCamera * _cam)
+{
+	cam = _cam;
+}
+
+ofVec2f Input::getMouseScreenPos()
 {
 	return mPos;
+}
+
+ofVec2f Input::getMouseWorldPos()
+{
+	glm::vec3 worldPos = cam->screenToWorld(glm::vec3(mPos.x, mPos.y, 0.0f));
+	return ofVec2f(worldPos.x, worldPos.y);
 }
 
 bool Input::keyDown(int key)

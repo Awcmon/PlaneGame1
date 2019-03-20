@@ -26,6 +26,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	//cam.setupPerspective();
+	input.setCamera(&cam);
 	cam.setPosition(ofVec3f(0.0f, 0.0f, 1000));
 
 	cam.enableOrtho();
@@ -47,7 +48,7 @@ void ofApp::draw(){
 	ofDrawCircle(glm::vec3(0.0f, 0.0f, -10.0f), 8);
 
 	ofSetColor(0, 0, 255);
-	ofDrawCircle(cam.screenToWorld(input.getMousePos()), 8);
+	ofDrawCircle(input.getMouseWorldPos(), 8);
 
 	cam.end();
 }
