@@ -34,16 +34,16 @@ void Player::update()
 		bullet->setAng(ang);
 		bullet->setPos(toWorld(ofVec2f(32.0f, 0.0f)));
 
-		Particle* p = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
-		p->setVel(ofVec2f(ofRandomf() * 10.0f, -30.0f + ofRandomf() * 15.0f));
-		p->setAng(ofRandomf()*180.0f);
-		p->setPos(toWorld(ofVec2f(32.0f, 0.0f)));
-		p->setStartScale(0.4f);
-		p->setEndScale(3.0f);
-		p->setLifespan(100);
-		p->setStartAlpha(255.0f);
-		p->setEndAlpha(0.0f);
-		ents->add(p, LAYER_FG_BOTTOM);
+		Particle* shootPuff = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
+		shootPuff->setVel(ofVec2f(ofRandomf() * 10.0f, -30.0f + ofRandomf() * 15.0f));
+		shootPuff->setAng(ofRandomf()*180.0f);
+		shootPuff->setPos(toWorld(ofVec2f(32.0f, 0.0f)));
+		shootPuff->setStartScale(0.4f);
+		shootPuff->setEndScale(3.0f);
+		shootPuff->setLifespan(100);
+		shootPuff->setStartAlpha(255.0f);
+		shootPuff->setEndAlpha(0.0f);
+		ents->add(shootPuff, LAYER_FG_BOTTOM);
 
 		ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * 2.0f);
 
@@ -52,4 +52,26 @@ void Player::update()
 		ents->rm->getSound("sounds\\shoot2.wav").play();
 		lastShootTime = ofGetElapsedTimeMillis();
 	}
+
+	Particle* enginePuff1 = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
+	enginePuff1->setVel(ofVec2f(ofRandomf() * 2.0f, -50.0f + ofRandomf() * 25.0f));
+	enginePuff1->setAng(ofRandomf()*180.0f);
+	enginePuff1->setPos(toWorld(ofVec2f(-32.0f, 6.0f)));
+	enginePuff1->setStartScale(0.0f);
+	enginePuff1->setEndScale(3.0f);
+	enginePuff1->setLifespan(200);
+	enginePuff1->setStartAlpha(255.0f);
+	enginePuff1->setEndAlpha(0.0f);
+	ents->add(enginePuff1, LAYER_FG_BOTTOM);
+
+	Particle* enginePuff2 = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
+	enginePuff2->setVel(ofVec2f(ofRandomf() * 2.0f, -50.0f + ofRandomf() * 25.0f));
+	enginePuff2->setAng(ofRandomf()*180.0f);
+	enginePuff2->setPos(toWorld(ofVec2f(-32.0f, -6.0f)));
+	enginePuff2->setStartScale(0.0f);
+	enginePuff2->setEndScale(3.0f);
+	enginePuff2->setLifespan(200);
+	enginePuff2->setStartAlpha(255.0f);
+	enginePuff2->setEndAlpha(0.0f);
+	ents->add(enginePuff2, LAYER_FG_BOTTOM);
 }

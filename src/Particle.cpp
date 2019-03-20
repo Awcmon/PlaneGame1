@@ -39,7 +39,7 @@ void Particle::update()
 	Sprite::update();
 
 	float lifePercentage = ((float)(ofGetElapsedTimeMillis() - createTime)) / ((float)lifespan);
-	std::cout << lifePercentage << "\n";
+	//std::cout << lifePercentage << "\n";
 	scale = startScale + (endScale - startScale) * lifePercentage;
 	alpha = (int)(startAlpha + (endAlpha - startAlpha) * lifePercentage);
 }
