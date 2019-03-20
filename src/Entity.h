@@ -13,7 +13,7 @@ class EntitySystem; //class prototype
 class Entity
 {
 public:
-	Entity(std::string _id = "entity", glm::vec3 _pos = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 _scale = glm::vec3(1.0f, 1.0f, 1.0f), float _ang = 0.0f, glm::vec3 _vel = glm::vec3(0.0f, 0.0f, 0.0f));
+	Entity(std::string _id = "entity", ofVec2f _pos = ofVec2f(0.0f, 0.0f), ofVec2f _scale = ofVec2f(1.0f, 1.0f), float _ang = 0.0f, ofVec2f _vel = ofVec2f(0.0f, 0.0f));
 
 	virtual void update();
 	virtual void draw();
@@ -21,17 +21,21 @@ public:
 	void setEntitySystem(EntitySystem* _entSys);
 	void setID(std::string _id);
 	std::string getID();
+	Entity* getOwner();
+	void setOwner(Entity* _owner);
 
-	glm::vec3 pos;
-	glm::vec3 size;
-	glm::vec3 scale;
-	glm::vec3 vel;
+	ofVec2f pos;
+	ofVec2f size;
+	ofVec2f scale;
+	ofVec2f vel;
 	float ang;
+	
+	Entity* owner;
 
 	std::string id;
 
 protected:
-	EntitySystem* ents; //pointer to the entity system to handle deletion
+	EntitySystem * ents; //pointer to the entity system to handle deletion
 };
 
 //Manages all the entities

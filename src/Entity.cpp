@@ -1,12 +1,13 @@
 #include "Entity.h"
 
-Entity::Entity(std::string _id, glm::vec3 _pos, glm::vec3 _scale, float _ang, glm::vec3 _vel)
+Entity::Entity(std::string _id, ofVec2f _pos, ofVec2f _scale, float _ang, ofVec2f _vel)
 {
 	id = _id;
 	pos = _pos;
 	scale = _scale;
 	ang = _ang;
 	vel = _vel;
+	owner = nullptr;
 }
 
 //ToDo: Make this framerate independent maybe?
@@ -17,7 +18,7 @@ void Entity::update()
 
 void Entity::draw()
 {
-	
+
 }
 
 //tell the entity system this belongs to to remove this entity next update
@@ -39,6 +40,16 @@ void Entity::setID(std::string _id)
 std::string Entity::getID()
 {
 	return id;
+}
+
+Entity * Entity::getOwner()
+{
+	return owner;
+}
+
+void Entity::setOwner(Entity * _owner)
+{
+	owner = _owner;
 }
 
 
