@@ -42,15 +42,17 @@ public:
 	EntitySystem();
 	~EntitySystem();
 
+	void init(int numLayers = 5);
+
 	void setResourceManager(ResourceManager* _rm);
 
 	void update();
 	void draw();
-	void add(Entity* ent);
+	void add(Entity* ent, int layer = 0);
 	void remove(Entity* ent);
 	void clear(); //deallocates (deletes) all entities.
 
-	std::vector<Entity*> entities;
+	std::vector<std::vector<Entity*>> entities;
 
 	ResourceManager* rm;
 

@@ -45,12 +45,18 @@ std::string Entity::getID()
 
 EntitySystem::EntitySystem()
 {
+	init();
 }
 
 //On destruct, clear all entities held by the system
 EntitySystem::~EntitySystem()
 {
 	clear();
+}
+
+void EntitySystem::init(int numLayers)
+{
+	entities.resize(numLayers, {});
 }
 
 void EntitySystem::setResourceManager(ResourceManager* _rm)
@@ -68,7 +74,10 @@ void EntitySystem::update()
 	for (size_t i = 0; i < entitiesToRemove.size(); i++)
 	{
 		//std::cout << "deleted\n";
-		entities.erase(std::remove(entities.begin(), entities.end(), entitiesToRemove[i]), entities.end());
+		for (size_t j = 0; j < entities.size(); j++)
+		{
+			entities[j].erase(std::remove(entities[j].begin(), entities[j].end(), entitiesToRemove[i]), entities[j].end());
+		}
 		delete entitiesToRemove[i];
 	}
 	entitiesToRemove.clear();
@@ -76,26 +85,32 @@ void EntitySystem::update()
 	//update the remaining entities
 	for (size_t i = 0; i < entities.size(); ++i)
 	{
-		entities[i]->update();
+		for (size_t j = 0; j < entities[i].size(); ++j)
+		{
+			entities[i][j]->update();
+		}
 	}
 }
 
 //draw all entities
 void EntitySystem::draw()
 {
+	//update the remaining entities
 	for (size_t i = 0; i < entities.size(); ++i)
 	{
-		//std::cout << "draw" << i << "\n";
-		entities[i]->draw();
+		for (size_t j = 0; j < entities[i].size(); ++j)
+		{
+			entities[i][j]->draw();
+		}
 	}
 }
 
 //add entity to the system
-void EntitySystem::add(Entity* ent)
+void EntitySystem::add(Entity* ent, int layer)
 {
 	//std::cout << "added\n";
 	ent->setEntitySystem(this);
-	entities.push_back(ent);
+	entities[layer].push_back(ent);
 }
 
 //queue for deletion at the next update
@@ -114,7 +129,11 @@ void EntitySystem::clear()
 
 	for (size_t i = 0; i < entities.size(); ++i)
 	{
-		delete entities[i];
+		for (size_t j = 0; j < entities[i].size(); ++j)
+		{
+			delete entities[i][j];
+		}
+		entities[i].clear();
 	}
 	entities.clear();
 }

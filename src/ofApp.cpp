@@ -19,7 +19,7 @@
 
 //Testing:
 //ToDo: Test Input class
-//ToDo: Test Player class
+//ToDo: Test EntitySystem render order system
 
 //NOTE FOR GRADER: "EntitySystem" is just a genericized "SpriteSystem" for the most part.
 
