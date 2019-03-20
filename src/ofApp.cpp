@@ -3,7 +3,7 @@
 //Features:
 //RESOLVED: Implement a resource manager
 //RESOLVED: Implement a proper coordinate system + camera
-//ToDo: Implement a proper render order system
+//RESOLVED: Implement a proper render order system
 //RESOLVED: Implement a better input system?
 //ToDo: Proper gamestate system instead of this hacked together stuff
 //ToDo: Add lifespan to enemies
@@ -33,8 +33,8 @@ void ofApp::setup(){
 	input.setCamera(&cam);
 
 	//cam.setupPerspective();
-	cam.setPosition(ofVec3f(0.0f, 0.0f, 1000));
-	cam.enableOrtho();
+	view.cam.setPosition(ofVec3f(0.0f, 0.0f, 1000));
+	view.cam.enableOrtho();
 
 	ents.add(new Player(rm.getImage("images\\f14.png"), &input), LAYER_FG_MID);
 
@@ -50,7 +50,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	cam.begin();
+	view.cam.begin();
 
 	/*
 	ofSetColor(0, 255, 0);
@@ -68,7 +68,7 @@ void ofApp::draw(){
 	ofSetColor(ofColor::dimGrey);
 	ofDrawGrid(32.0f, 24, true, false, false, true);
 
-	cam.end();
+	view.cam.end();
 
 	ofSetColor(ofColor::white);
 	ofDrawBitmapString("Frame Rate: " + std::to_string(ofGetFrameRate()), ofGetWindowWidth() - 170, 15);

@@ -5,6 +5,7 @@
 #include "Input.h"
 #include "Sprite.h"
 #include "Player.h"
+#include "Camera.h"
 
 class ofApp : public ofBaseApp{
 
@@ -28,6 +29,6 @@ class ofApp : public ofBaseApp{
 		EntitySystem ents;
 		ResourceManager rm;
 		Input input;
-		ofCamera cam;
+		Camera view;
 
 };

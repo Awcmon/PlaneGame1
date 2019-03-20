@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Camera.h"
 #include <array>
 
 class Input
@@ -8,11 +9,11 @@ class Input
 	ofVec2f mPos;
 	std::array<bool, 512> keysDown;
 	std::array<bool, 3> mouseButtonsDown;
-	ofCamera* cam;
+	Camera* view;
 public:
 	Input();
 
-	void setCamera(ofCamera* _cam);
+	void setCamera(Camera* _cam);
 
 	ofVec2f getMouseScreenPos();
 	ofVec2f getMouseWorldPos();
