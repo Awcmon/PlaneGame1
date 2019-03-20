@@ -6,6 +6,7 @@ Player::Player(ofImage _image, Input* _input)
 	input = _input;
 	lastShootTime = 0;
 	shootPeriod = 40;
+	shootSpeed = 30.0f;
 }
 
 void Player::handleInput()
@@ -27,7 +28,12 @@ void Player::update()
 	//ang = clamp(normalizeAngle(-ang + 90.0f), -60.0f, 60.0f);
 	if (input->mouseDown(0) && ofGetElapsedTimeMillis() > lastShootTime + shootPeriod)
 	{
+		Bullet* bullet = new Bullet(ents->rm->getImage("images\\bullet.png"));
+		bullet->setVel(ofVec2f(shootSpeed, 0.0f).rotate(ang));
+		bullet->setAng(ang);
+		bullet->setPos(toWorld(ofVec2f(32.0f, 0.0f)));
 
+		ents->add(bullet, LAYER_FG_BOTTOM);
 
 		ents->rm->getSound("sounds\\shoot2.wav").play();
 		lastShootTime = ofGetElapsedTimeMillis();

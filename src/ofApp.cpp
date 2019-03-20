@@ -66,9 +66,13 @@ void ofApp::draw(){
 	ents.draw();
 
 	ofSetColor(ofColor::dimGrey);
-	ofDrawGrid(32.0f, 18, true, false, false, true);
+	ofDrawGrid(32.0f, 24, true, false, false, true);
 
 	cam.end();
+
+	ofSetColor(ofColor::white);
+	ofDrawBitmapString("Frame Rate: " + std::to_string(ofGetFrameRate()), ofGetWindowWidth() - 170, 15);
+	ofDrawBitmapString("Entities: " + std::to_string(ents.size()), ofGetWindowWidth() - 170, 35);
 }
 
 //--------------------------------------------------------------

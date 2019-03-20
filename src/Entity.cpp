@@ -54,6 +54,41 @@ void Entity::setOwner(Entity * _owner)
 	owner = _owner;
 }
 
+void Entity::setVel(ofVec2f _vel)
+{
+	vel = _vel;
+}
+
+ofVec2f Entity::getVel()
+{
+	return vel;
+}
+
+void Entity::setAng(float _ang)
+{
+	ang = _ang;
+}
+
+float Entity::getAng()
+{
+	return ang;
+}
+
+void Entity::setPos(ofVec2f _pos)
+{
+	pos = _pos;
+}
+
+ofVec2f Entity::getPos()
+{
+	return pos;
+}
+
+ofVec2f Entity::toWorld(ofVec2f _localpos)
+{
+	return pos + _localpos.rotate(ang);
+}
+
 
 
 EntitySystem::EntitySystem()
@@ -149,4 +184,14 @@ void EntitySystem::clear()
 		entities[i].clear();
 	}
 	entities.clear();
+}
+
+size_t EntitySystem::size()
+{
+	size_t sum = 0;
+	for (size_t i = 0; i < entities.size(); ++i)
+	{
+		sum += entities[i].size();
+	}
+	return sum;
 }

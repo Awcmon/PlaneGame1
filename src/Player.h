@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #include "Input.h"
 #include "util.h"
+#include "Bullet.h"
 
 class Player : public Sprite
 {
@@ -16,4 +17,5 @@ public:
 	ofVec2f targetPos;
 	uint64_t lastShootTime;
 	uint64_t shootPeriod;
+	float shootSpeed;
 };

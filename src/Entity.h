@@ -31,6 +31,13 @@ public:
 	std::string getID();
 	Entity* getOwner();
 	void setOwner(Entity* _owner);
+	void setVel(ofVec2f _vel);
+	ofVec2f getVel();
+	void setAng(float _ang);
+	float getAng();
+	void setPos(ofVec2f _pos);
+	ofVec2f getPos();
+	ofVec2f toWorld(ofVec2f _localpos);
 
 	ofVec2f pos;
 	ofVec2f size;
@@ -65,6 +72,7 @@ public:
 	void add(Entity* ent, int layer = 0); //the layer determines render order. higher layer has higher priority.
 	void remove(Entity* ent);
 	void clear(); //deallocates (deletes) all entities.
+	size_t size();
 
 	std::vector<std::vector<Entity*>> entities;
 
