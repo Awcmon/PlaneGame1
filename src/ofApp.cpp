@@ -10,6 +10,8 @@
 //ToDo: Continuous collision detection for bullets
 //ToDo: Add screenshake (part of the cam system)
 //ToDo: Add components system to entities?
+//ToDo: Implement a good collision system?
+//ToDo: Implement a good component/parenting system?
 
 //Optimizations:
 //ToDo: Implement listener systems for more things rather than the mess currently
@@ -40,6 +42,11 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	cam.begin();
+
+	/*
+	ofSetColor(ofColor::dimGrey);
+	ofDrawGrid(32.0f, 18, true, false, false, true);
+	*/
 
 	ofSetColor(0, 255, 0);
 	ofDrawCircle(glm::vec3(0.0f, 0.0f, 10.0f), 10);
