@@ -38,11 +38,18 @@ void Sprite::draw()
 		ofPopMatrix();
 		*/
 		//std::cout << "test";
+		ofSetRectMode(OF_RECTMODE_CENTER);
+
+		ofPushMatrix();
+		ofTranslate(pos);
+		ofRotateDeg(ang);
+
 		ofEnableAlphaBlending();
-		ofDrawCircle(glm::vec3(0.0f, 0.0f, -10.0f), 8);
 		ofSetColor(color, alpha);
-		image.draw(pos);
+		image.draw(0.0f, 0.0f);
 		ofDisableAlphaBlending();
+
+		ofPopMatrix();
 	}
 }
 

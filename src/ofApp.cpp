@@ -21,7 +21,7 @@
 
 //Testing:
 //ToDo: Test Input class
-//ToDo: Test EntitySystem render order system
+//RESOLVED: Test EntitySystem render order system
 
 //NOTE FOR GRADER: "EntitySystem" is just a genericized "SpriteSystem" for the most part.
 
@@ -35,7 +35,8 @@ void ofApp::setup(){
 	cam.setPosition(ofVec3f(0.0f, 0.0f, 1000));
 	cam.enableOrtho();
 
-	ents.add(new Sprite(rm.getImage("images\\f14.png")));
+	ents.add(new Sprite(rm.getImage("images\\f14.png")), 3);
+	ents.add(new Sprite(rm.getImage("images\\missile.png")), 2);
 }
 
 //--------------------------------------------------------------
@@ -65,7 +66,6 @@ void ofApp::draw(){
 	ents.draw();
 
 	ofSetColor(ofColor::dimGrey);
-
 	ofDrawGrid(32.0f, 18, true, false, false, true);
 
 	cam.end();
