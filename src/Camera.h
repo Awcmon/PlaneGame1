@@ -3,14 +3,16 @@
 #include "ofMain.h"
 #include "util.h"
 
-class Camera
+class View
 {
 public:
+	View();
+	
 	ofCamera cam;
 
 	void posViewPunch(ofVec2f pos);
-
 	void update();
+	ofVec2f getTotalOffset();
 
 	ofVec2f punchPos;
 

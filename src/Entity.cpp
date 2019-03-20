@@ -112,6 +112,11 @@ void EntitySystem::setResourceManager(ResourceManager* _rm)
 	rm = _rm;
 }
 
+void EntitySystem::setView(View * _view)
+{
+	view = _view;
+}
+
 //Delete entities that need to be deleted then run update on them
 void EntitySystem::update()
 {

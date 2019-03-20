@@ -29,8 +29,9 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ents.setResourceManager(&rm);
+	ents.setView(&view);
 
-	input.setCamera(&cam);
+	input.setView(&view);
 
 	//cam.setupPerspective();
 	view.cam.setPosition(ofVec3f(0.0f, 0.0f, 1000));
@@ -40,11 +41,16 @@ void ofApp::setup(){
 
 	//ents.add(new Sprite(rm.getImage("images\\f14.png")), 3);
 	//ents.add(new Sprite(rm.getImage("images\\missile.png")), 2);
+
+	ofHideCursor();
+
+	ofSeedRandom();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 	//cam.setPosition(ofVec3f(ofRandomf(), ofRandomf(), 1000));
+	view.update();
 	ents.update();
 }
 

@@ -5,6 +5,7 @@
 
 #include "ofMain.h"
 #include "ResourceManager.h"
+#include "Camera.h"
 
 //Define some basic layers.
 #define LAYER_BG_BOTTOM 0
@@ -66,6 +67,7 @@ public:
 	void init(int numLayers = 5);
 
 	void setResourceManager(ResourceManager* _rm);
+	void setView(View* _view);
 
 	void update();
 	void draw();
@@ -77,6 +79,7 @@ public:
 	std::vector<std::vector<Entity*>> entities;
 
 	ResourceManager* rm;
+	View* view;
 
 private:
 	std::vector<Entity*> entitiesToRemove;

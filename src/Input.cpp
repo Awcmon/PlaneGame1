@@ -9,7 +9,7 @@ Input::Input()
 	}
 }
 
-void Input::setCamera(Camera * _view)
+void Input::setView(View * _view)
 {
 	view = _view;
 }
@@ -22,7 +22,7 @@ ofVec2f Input::getMouseScreenPos()
 ofVec2f Input::getMouseWorldPos()
 {
 	glm::vec3 worldPos = view->cam.screenToWorld(glm::vec3(mPos.x, mPos.y, 0.0f));
-	return ofVec2f(worldPos.x, worldPos.y);
+	return ofVec2f(worldPos.x, worldPos.y) - view->getTotalOffset();
 }
 
 bool Input::keyDown(int key)

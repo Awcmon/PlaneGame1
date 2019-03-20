@@ -33,6 +33,8 @@ void Player::update()
 		bullet->setAng(ang);
 		bullet->setPos(toWorld(ofVec2f(32.0f, 0.0f)));
 
+		ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * 2.0f);
+
 		ents->add(bullet, LAYER_FG_BOTTOM);
 
 		ents->rm->getSound("sounds\\shoot2.wav").play();
