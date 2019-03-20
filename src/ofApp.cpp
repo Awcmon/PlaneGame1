@@ -27,27 +27,29 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	//cam.setupPerspective();
-	input.setCamera(&cam);
-	cam.setPosition(ofVec3f(0.0f, 0.0f, 1000));
+	ents.setResourceManager(&rm);
 
+	input.setCamera(&cam);
+
+	//cam.setupPerspective();
+	cam.setPosition(ofVec3f(0.0f, 0.0f, 1000));
 	cam.enableOrtho();
+
+	ents.add(new Sprite(rm.getImage("images\\f14.png")));
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 	//cam.setPosition(ofVec3f(ofRandomf(), ofRandomf(), 1000));
+	ents.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	cam.begin();
 
+	
 	/*
-	ofSetColor(ofColor::dimGrey);
-	ofDrawGrid(32.0f, 18, true, false, false, true);
-	*/
-
 	ofSetColor(0, 255, 0);
 	ofDrawCircle(glm::vec3(0.0f, 0.0f, 10.0f), 10);
 
@@ -56,6 +58,15 @@ void ofApp::draw(){
 
 	ofSetColor(0, 0, 255);
 	ofDrawCircle(input.getMouseWorldPos(), 8);
+	*/
+
+	//rm.getImage("images\\f14.png").draw(glm::vec3(0.0f, 0.0f, 0.0f));
+
+	ents.draw();
+
+	ofSetColor(ofColor::dimGrey);
+
+	ofDrawGrid(32.0f, 18, true, false, false, true);
 
 	cam.end();
 }

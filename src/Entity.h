@@ -29,6 +29,8 @@ public:
 	ofVec2f scale;
 	ofVec2f vel;
 	float ang;
+	ofColor color;
+	int alpha;
 	
 	Entity* owner;
 

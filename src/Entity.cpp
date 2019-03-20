@@ -8,6 +8,8 @@ Entity::Entity(std::string _id, ofVec2f _pos, ofVec2f _scale, float _ang, ofVec2
 	ang = _ang;
 	vel = _vel;
 	owner = nullptr;
+	color = ofColor(255, 255, 255);
+	alpha = 255;
 }
 
 //ToDo: Make this framerate independent maybe?

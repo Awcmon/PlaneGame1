@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "Entity.h"
 #include "Input.h"
+#include "Sprite.h"
 
 class ofApp : public ofBaseApp{
 
