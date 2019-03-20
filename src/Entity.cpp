@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-Entity::Entity(std::string _id, ofVec2f _pos, ofVec2f _scale, float _ang, ofVec2f _vel)
+Entity::Entity(std::string _id, ofVec2f _pos, float _scale, float _ang, ofVec2f _vel)
 {
 	id = _id;
 	pos = _pos;
@@ -87,6 +87,11 @@ ofVec2f Entity::getPos()
 ofVec2f Entity::toWorld(ofVec2f _localpos)
 {
 	return pos + _localpos.rotate(ang);
+}
+
+void Entity::setScale(float _scale)
+{
+	scale = _scale;
 }
 
 

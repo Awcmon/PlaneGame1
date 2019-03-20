@@ -3,7 +3,7 @@
 Sprite::Sprite()
 {
 	hasImage = false;
-	lifeSpan = -1;
+	lifespan = -1;
 	createTime = ofGetElapsedTimeMillis();
 	setID("sprite");
 }
@@ -11,7 +11,7 @@ Sprite::Sprite()
 Sprite::Sprite(ofImage _image)
 {
 	setImage(_image);
-	lifeSpan = -1;
+	lifespan = -1;
 	createTime = ofGetElapsedTimeMillis();
 	setID("sprite");
 }
@@ -19,7 +19,7 @@ Sprite::Sprite(ofImage _image)
 void Sprite::update()
 {
 	Entity::update();
-	if (lifeSpan != -1 && ofGetElapsedTimeMillis() > createTime + lifeSpan)
+	if (lifespan != -1 && ofGetElapsedTimeMillis() > createTime + lifespan)
 	{
 		remove();
 	}
@@ -44,6 +44,8 @@ void Sprite::draw()
 		ofTranslate(pos);
 		ofRotateDeg(ang);
 
+		ofScale(scale);
+
 		ofEnableAlphaBlending();
 		ofSetColor(color, alpha);
 		image.draw(0.0f, 0.0f);
@@ -58,4 +60,9 @@ void Sprite::setImage(ofImage _image)
 	image = _image;
 	size = ofVec2f(image.getWidth(), image.getHeight());
 	hasImage = true;
+}
+
+void Sprite::setLifespan(int _lifespan)
+{
+	lifespan = _lifespan;
 }

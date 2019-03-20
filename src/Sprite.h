@@ -12,10 +12,11 @@ public:
 	virtual void update();
 	virtual void draw();
 	void setImage(ofImage _image);
+	void setLifespan(int _lifespan);
 
 	ofImage image;
 	bool hasImage;
 
-	int lifeSpan; //in millis
+	int lifespan; //in millis
 	uint64_t createTime;
 };

@@ -58,6 +58,9 @@
     <ClCompile Include="src\Camera.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Particle.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -135,6 +138,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Camera.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Particle.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

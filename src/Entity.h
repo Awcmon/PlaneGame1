@@ -22,7 +22,7 @@ class EntitySystem; //class prototype
 class Entity
 {
 public:
-	Entity(std::string _id = "entity", ofVec2f _pos = ofVec2f(0.0f, 0.0f), ofVec2f _scale = ofVec2f(1.0f, 1.0f), float _ang = 0.0f, ofVec2f _vel = ofVec2f(0.0f, 0.0f));
+	Entity(std::string _id = "entity", ofVec2f _pos = ofVec2f(0.0f, 0.0f), float _scale = 1.0f, float _ang = 0.0f, ofVec2f _vel = ofVec2f(0.0f, 0.0f));
 
 	virtual void update();
 	virtual void draw();
@@ -39,10 +39,11 @@ public:
 	void setPos(ofVec2f _pos);
 	ofVec2f getPos();
 	ofVec2f toWorld(ofVec2f _localpos);
+	void setScale(float _scale);
 
 	ofVec2f pos;
 	ofVec2f size;
-	ofVec2f scale;
+	float scale;
 	ofVec2f vel;
 	float ang;
 	ofColor color;

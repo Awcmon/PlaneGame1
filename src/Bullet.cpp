@@ -4,7 +4,7 @@
 Bullet::Bullet()
 {
 	setID("bullet");
-	lifeSpan = 2000;
+	lifespan = 2000;
 	createTime = ofGetElapsedTimeMillis();
 }
 
@@ -12,7 +12,7 @@ Bullet::Bullet(ofImage _image)
 {
 	setID("bullet");
 	setImage(_image);
-	lifeSpan = 2000;
+	lifespan = 2000;
 	createTime = ofGetElapsedTimeMillis();
 }
 

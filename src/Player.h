@@ -4,6 +4,7 @@
 #include "Input.h"
 #include "util.h"
 #include "Bullet.h"
+#include "Particle.h"
 
 class Player : public Sprite
 {

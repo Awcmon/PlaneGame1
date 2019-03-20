@@ -196,6 +196,7 @@
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
+    <ClCompile Include="src\Particle.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
+    <ClInclude Include="src\Particle.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\ResourceManager.h" />
     <ClInclude Include="src\Sprite.h" />
