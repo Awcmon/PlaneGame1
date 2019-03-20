@@ -2,7 +2,7 @@
 
 //Features:
 //RESOLVED: Implement a resource manager
-//ToDo: Implement a proper coordinate system + camera
+//RESOLVED: Implement a proper coordinate system + camera
 //ToDo: Implement a proper render order system
 //RESOLVED: Implement a better input system?
 //ToDo: Proper gamestate system instead of this hacked together stuff
@@ -25,17 +25,31 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	//cam.setupPerspective();
+	cam.setPosition(ofVec3f(0.0f, 0.0f, 1000));
 
+	cam.enableOrtho();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+	//cam.setPosition(ofVec3f(ofRandomf(), ofRandomf(), 1000));
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	cam.begin();
 
+	ofSetColor(0, 255, 0);
+	ofDrawCircle(glm::vec3(0.0f, 0.0f, 10.0f), 10);
+
+	ofSetColor(255, 0, 0);
+	ofDrawCircle(glm::vec3(0.0f, 0.0f, -10.0f), 8);
+
+	ofSetColor(0, 0, 255);
+	ofDrawCircle(cam.screenToWorld(input.getMousePos()), 8);
+
+	cam.end();
 }
 
 //--------------------------------------------------------------

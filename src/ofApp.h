@@ -26,5 +26,6 @@ class ofApp : public ofBaseApp{
 		EntitySystem ents;
 		ResourceManager rm;
 		Input input;
+		ofCamera cam;
 
 };

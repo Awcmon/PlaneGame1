@@ -9,6 +9,7 @@ class EntitySystem; //class prototype
 
 //Base class for game objects
 //ToDo: Consider some method of static polymorphism?
+//Use z position for render order
 class Entity
 {
 public:
