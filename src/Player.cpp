@@ -7,7 +7,7 @@ Player::Player(ofImage _image, Input* _input)
 	input = _input;
 	lastShootTime = 0;
 	shootPeriod = 40;
-	shootSpeed = 30.0f;
+	shootSpeed = 40.0f;
 }
 
 void Player::handleInput()
@@ -25,6 +25,11 @@ void Player::update()
 	if (diff.y < 0) { diff.y *= -1.0f; } //reflect across x-axis
 										 //ang = diff.angle(ofVec2f(1, 0));
 	ang = ofVec2f(1.0f, 0.0f).angle((targetPos - pos));
+	ang = clamp(normalizeAngle(ang), 60.0f, 120.0f);
+	if (targetPos.y < pos.y + 32.0f && abs(targetPos.x - pos.x) < 8.0f)
+	{
+		ang = 90.0f;
+	}
 	
 	//ang = clamp(normalizeAngle(-ang + 90.0f), -60.0f, 60.0f);
 	if (input->mouseDown(0) && ofGetElapsedTimeMillis() > lastShootTime + shootPeriod)
@@ -54,24 +59,24 @@ void Player::update()
 	}
 
 	Particle* enginePuff1 = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
-	enginePuff1->setVel(ofVec2f(ofRandomf() * 2.0f, -50.0f + ofRandomf() * 25.0f));
+	enginePuff1->setVel(ofVec2f(ofRandomf() * 2.0f, -75.0f + ofRandomf() * 25.0f));
 	enginePuff1->setAng(ofRandomf()*180.0f);
 	enginePuff1->setPos(toWorld(ofVec2f(-32.0f, 6.0f)));
 	enginePuff1->setStartScale(0.0f);
 	enginePuff1->setEndScale(3.0f);
-	enginePuff1->setLifespan(200);
-	enginePuff1->setStartAlpha(255.0f);
+	enginePuff1->setLifespan(75);
+	enginePuff1->setStartAlpha(100.0f);
 	enginePuff1->setEndAlpha(0.0f);
 	ents->add(enginePuff1, LAYER_FG_BOTTOM);
 
 	Particle* enginePuff2 = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
-	enginePuff2->setVel(ofVec2f(ofRandomf() * 2.0f, -50.0f + ofRandomf() * 25.0f));
+	enginePuff2->setVel(ofVec2f(ofRandomf() * 2.0f, -75.0f + ofRandomf() * 25.0f));
 	enginePuff2->setAng(ofRandomf()*180.0f);
 	enginePuff2->setPos(toWorld(ofVec2f(-32.0f, -6.0f)));
 	enginePuff2->setStartScale(0.0f);
 	enginePuff2->setEndScale(3.0f);
-	enginePuff2->setLifespan(200);
-	enginePuff2->setStartAlpha(255.0f);
+	enginePuff2->setLifespan(75);
+	enginePuff2->setStartAlpha(100.0f);
 	enginePuff2->setEndAlpha(0.0f);
 	ents->add(enginePuff2, LAYER_FG_BOTTOM);
 }

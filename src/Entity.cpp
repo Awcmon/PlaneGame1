@@ -179,10 +179,12 @@ void EntitySystem::remove(Entity * ent)
 
 void EntitySystem::clear()
 {
+	/*
 	for (size_t i = 0; i < entitiesToRemove.size(); ++i)
 	{
 		delete entitiesToRemove[i];
 	}
+	*/
 	entitiesToRemove.clear();
 
 	for (size_t i = 0; i < entities.size(); ++i)

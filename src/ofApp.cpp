@@ -42,7 +42,7 @@ void ofApp::setup(){
 	//ents.add(new Sprite(rm.getImage("images\\f14.png")), 3);
 	//ents.add(new Sprite(rm.getImage("images\\missile.png")), 2);
 
-	ofHideCursor();
+	//ofHideCursor();
 
 	ofSeedRandom();
 }
@@ -71,8 +71,10 @@ void ofApp::draw(){
 
 	ents.draw();
 
+	/*
 	ofSetColor(ofColor::dimGrey);
 	ofDrawGrid(32.0f, 24, true, false, false, true);
+	*/
 
 	view.cam.end();
 
