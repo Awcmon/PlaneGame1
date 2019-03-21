@@ -1,38 +1,20 @@
 #pragma once
 
 #include <math.h>
+#include <algorithm>
 
 //approach a value
 inline float approach(float value, float target, float increment)
 {
 	if (value < target)
 	{
-		if ((value + increment) < target)
-		{
-			value += increment;
-		}
-		else
-		{
-			value = target;
-		}
+		return std::min(value + abs(increment), target);
 	}
 	else if (value > target)
 	{
-		if ((value + increment) > target)
-		{
-			value -= increment;
-		}
-		else
-		{
-			value = target;
-		}
+		return std::max(value - abs(increment), target);
 	}
-	else
-	{
-		value = target;
-	}
-
-	return value;
+	return target;
 }
 
 //clamp a value
@@ -40,11 +22,11 @@ inline float clamp(float value, float min, float max)
 {
 	if (value > max)
 	{
-		value = max;
+		return max;
 	}
 	else if (value < min)
 	{
-		value = min;
+		return min;
 	}
 	return value;
 }
@@ -69,7 +51,7 @@ inline float angleDifference(float a, float b)
 }
 
 //approach an angle with the least rotation (solves the problem of -180 and 180 degrees being next to each other)
-inline float ApproachAngle(float cur, float target, float inc)
+inline float approachAngle(float cur, float target, float inc)
 {
 	float diff = angleDifference(target, cur);
 	return approach(cur, cur + diff, inc);

@@ -22,16 +22,18 @@ void Player::update()
 	ofVec2f diff = targetPos - pos - ofVec2f(0, 32.0f);
 	pos += diff * 0.2f;
 
-	if (diff.y < 0) { diff.y *= -1.0f; } //reflect across x-axis
+	//if (diff.y < 0) { diff.y *= -1.0f; } //reflect across x-axis
 										 //ang = diff.angle(ofVec2f(1, 0));
-	ang = ofVec2f(1.0f, 0.0f).angle((targetPos - pos));
+	float targAng = ofVec2f(1.0f, 0.0f).angle((targetPos - pos));
+	ang = approachAngle(ang, targAng, 5.0f);
 	ang = clamp(normalizeAngle(ang), 60.0f, 120.0f);
+	/*
 	if (targetPos.y < pos.y + 32.0f && abs(targetPos.x - pos.x) < 8.0f)
 	{
 		ang = 90.0f;
 	}
-	
-	//ang = clamp(normalizeAngle(-ang + 90.0f), -60.0f, 60.0f);
+	*/
+	//ang = clamp(normalizeAngle(ang), -60.0f, 60.0f);
 	if (input->mouseDown(0) && ofGetElapsedTimeMillis() > lastShootTime + shootPeriod)
 	{
 		Bullet* bullet = new Bullet(ents->rm->getImage("images\\bullet.png"));

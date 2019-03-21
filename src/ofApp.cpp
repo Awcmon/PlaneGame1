@@ -37,7 +37,9 @@ void ofApp::setup(){
 	view.cam.setPosition(ofVec3f(0.0f, 0.0f, 1000));
 	view.cam.enableOrtho();
 
-	ents.add(new Player(rm.getImage("images\\f14.png"), &input), LAYER_FG_MID);
+	Player* player = new Player(rm.getImage("images\\f14.png"), &input);
+	player->setAng(90.0f);
+	ents.add(player, LAYER_FG_MID);
 
 	//ents.add(new Sprite(rm.getImage("images\\f14.png")), 3);
 	//ents.add(new Sprite(rm.getImage("images\\missile.png")), 2);
