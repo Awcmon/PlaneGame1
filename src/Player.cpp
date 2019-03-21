@@ -22,23 +22,27 @@ void Player::update()
 	ofVec2f diff = targetPos - pos - ofVec2f(0, 32.0f);
 	pos += diff * 0.2f;
 
-	//if (diff.y < 0) { diff.y *= -1.0f; } //reflect across x-axis
-										 //ang = diff.angle(ofVec2f(1, 0));
+	//calculate angle from plane to mouse pos
 	float targAng = ofVec2f(1.0f, 0.0f).angle((targetPos - pos));
+
+	//reflect angle if it is negative (when the plane is backing up/"slowing down")
 	if (targAng < 0.0f)
 	{
 		targAng *= -1.0f;
 	}
-	targAng = clamp(normalizeAngle(targAng), 60.0f, 120.0f);
-	ang = approachAngle(ang, targAng, (targAng - ang)*0.2f);
-	//ang = clamp(normalizeAngle(ang), 60.0f, 120.0f);
-	/*
-	if (targetPos.y < pos.y + 32.0f && abs(targetPos.x - pos.x) < 8.0f)
+	
+	//Deadzone near center of the craft to prevent spazzing when mouse is very close to actual pos of plane
+	if (targetPos.y < pos.y + 32.0f && abs(targetPos.x - pos.x) < 1.0f)
 	{
 		ang = 90.0f;
 	}
-	*/
-	//ang = clamp(normalizeAngle(ang), -60.0f, 60.0f);
+
+	//clamp the target angle
+	targAng = clamp(normalizeAngle(targAng), 60.0f, 120.0f);
+
+	//approach target angle (smoothed)
+	ang = approachAngle(ang, targAng, (targAng - ang)*0.2f);
+	
 	if (input->mouseDown(0) && ofGetElapsedTimeMillis() > lastShootTime + shootPeriod)
 	{
 		Bullet* bullet = new Bullet(ents->rm->getImage("images\\bullet.png"));
