@@ -18,7 +18,7 @@
 //ToDo: Implement object pool for bullets and particles
 //RESOLVED?: Fix reliability problems
 //ToDo: Multi-threading for particles?
-//ToDo: Make resource manager return pointers instead, to stop possibly expensive data duplication?
+//RESOLVED: Make resource manager return pointers instead, to stop possibly expensive data duplication?
 
 //Testing:
 //ToDo: Test Input class

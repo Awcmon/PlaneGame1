@@ -25,8 +25,13 @@ void Player::update()
 	//if (diff.y < 0) { diff.y *= -1.0f; } //reflect across x-axis
 										 //ang = diff.angle(ofVec2f(1, 0));
 	float targAng = ofVec2f(1.0f, 0.0f).angle((targetPos - pos));
-	ang = approachAngle(ang, targAng, 5.0f);
-	ang = clamp(normalizeAngle(ang), 60.0f, 120.0f);
+	if (targAng < 0.0f)
+	{
+		targAng *= -1.0f;
+	}
+	targAng = clamp(normalizeAngle(targAng), 60.0f, 120.0f);
+	ang = approachAngle(ang, targAng, (targAng - ang)*0.2f);
+	//ang = clamp(normalizeAngle(ang), 60.0f, 120.0f);
 	/*
 	if (targetPos.y < pos.y + 32.0f && abs(targetPos.x - pos.x) < 8.0f)
 	{
