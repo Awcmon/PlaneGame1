@@ -1,6 +1,6 @@
 #include "Particle.h"
 
-Particle::Particle(ofImage _image)
+Particle::Particle(ofImage* _image)
 {
 	setImage(_image);
 	lifespan = 1000;

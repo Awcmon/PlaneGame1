@@ -8,13 +8,13 @@ class Sprite : public Entity
 {
 public:
 	Sprite();
-	Sprite(ofImage _image);
+	Sprite(ofImage* _image);
 	virtual void update();
 	virtual void draw();
-	void setImage(ofImage _image);
+	void setImage(ofImage* _image);
 	void setLifespan(int _lifespan);
 
-	ofImage image;
+	ofImage* image;
 	bool hasImage;
 
 	int lifespan; //in millis

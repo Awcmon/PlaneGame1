@@ -32,12 +32,12 @@ ResourceManager::ResourceManager()
 	}
 }
 
-ofImage ResourceManager::getImage(std::string path)
+ofImage* ResourceManager::getImage(std::string path)
 {
-	return images[path];
+	return &images[path];
 }
 
-ofSoundPlayer ResourceManager::getSound(std::string path)
+ofSoundPlayer* ResourceManager::getSound(std::string path)
 {
-	return sounds[path];
+	return &sounds[path];
 }

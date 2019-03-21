@@ -8,7 +8,7 @@ Bullet::Bullet()
 	createTime = ofGetElapsedTimeMillis();
 }
 
-Bullet::Bullet(ofImage _image)
+Bullet::Bullet(ofImage* _image)
 {
 	setID("bullet");
 	setImage(_image);

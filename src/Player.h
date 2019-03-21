@@ -11,7 +11,7 @@ class Player : public Sprite
 	Input* input;
 
 public:
-	Player(ofImage _image, Input* _input);
+	Player(ofImage* _image, Input* _input);
 	void handleInput();
 	void update();
 

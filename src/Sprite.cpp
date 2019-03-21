@@ -8,7 +8,7 @@ Sprite::Sprite()
 	setID("sprite");
 }
 
-Sprite::Sprite(ofImage _image)
+Sprite::Sprite(ofImage* _image)
 {
 	setImage(_image);
 	lifespan = -1;
@@ -48,17 +48,17 @@ void Sprite::draw()
 
 		ofEnableAlphaBlending();
 		ofSetColor(color, alpha);
-		image.draw(0.0f, 0.0f);
+		image->draw(0.0f, 0.0f);
 		ofDisableAlphaBlending();
 
 		ofPopMatrix();
 	}
 }
 
-void Sprite::setImage(ofImage _image)
+void Sprite::setImage(ofImage* _image)
 {
 	image = _image;
-	size = ofVec2f(image.getWidth(), image.getHeight());
+	size = ofVec2f(image->getWidth(), image->getHeight());
 	hasImage = true;
 }
 

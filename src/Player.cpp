@@ -1,7 +1,7 @@
 #include "Player.h"
 
 //ToDo: Make weapons their own entities that are attached to the plane?
-Player::Player(ofImage _image, Input* _input)
+Player::Player(ofImage* _image, Input* _input)
 {
 	setImage(_image);
 	input = _input;
@@ -56,7 +56,7 @@ void Player::update()
 
 		ents->add(bullet, LAYER_FG_BOTTOM);
 
-		ents->rm->getSound("sounds\\shoot2.wav").play();
+		ents->rm->getSound("sounds\\shoot2.wav")->play();
 		lastShootTime = ofGetElapsedTimeMillis();
 	}
 
