@@ -5,9 +5,12 @@ View::View()
 	punchPos = ofVec2f(0.0f, 0.0f);
 }
 
-void View::posViewPunch(ofVec2f pos)
+void View::posViewPunch(ofVec2f _punchPos)
 {
-	punchPos = pos;
+	if (_punchPos.lengthSquared() > punchPos.lengthSquared())
+	{
+		punchPos = _punchPos;
+	}
 }
 
 void View::update()

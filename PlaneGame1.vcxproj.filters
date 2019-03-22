@@ -143,6 +143,9 @@
     <ClInclude Include="src\Particle.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Enemy.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

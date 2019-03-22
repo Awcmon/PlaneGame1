@@ -30,6 +30,21 @@ ResourceManager::ResourceManager()
 		temp.load(soundsDir.getPath(i));
 		sounds[soundsDir.getPath(i)] = temp;
 	}
+
+	ofDirectory soundloopsDir("soundloops");
+	//only show png files
+	soundloopsDir.allowExt("wav");
+	//populate the directory object
+	soundloopsDir.listDir();
+
+	//go through and print out all the paths
+	for (size_t i = 0; i < soundloopsDir.size(); i++) {
+		std::cout << (soundloopsDir.getPath(i)) << "\n";
+		ofSoundPlayer temp;
+		temp.setLoop(true);
+		temp.load(soundloopsDir.getPath(i));
+		soundloops[soundloopsDir.getPath(i)] = temp;
+	}
 }
 
 ofImage* ResourceManager::getImage(std::string path)
@@ -41,3 +56,25 @@ ofSoundPlayer* ResourceManager::getSound(std::string path)
 {
 	return &sounds[path];
 }
+
+ofSoundPlayer * ResourceManager::getSoundLoop(std::string path)
+{
+	return &soundloops[path];
+}
+
+void ResourceManager::playSoundLoop(std::string path)
+{
+	if (!soundloops[path].isPlaying())
+	{
+		soundloops[path].play();
+	}
+}
+
+void ResourceManager::stopSoundLoop(std::string path)
+{
+	if (soundloops[path].isPlaying())
+	{
+		soundloops[path].stop();
+	}
+}
+

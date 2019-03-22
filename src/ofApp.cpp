@@ -1,6 +1,6 @@
 #include "ofApp.h"
 
-//Features:
+//Engine Features:
 //RESOLVED: Implement a resource manager
 //RESOLVED: Implement a proper coordinate system + camera
 //RESOLVED: Implement a proper render order system
@@ -8,10 +8,16 @@
 //ToDo: Proper gamestate system instead of this hacked together stuff
 //ToDo: Add lifespan to enemies
 //ToDo: Continuous collision detection for bullets
-//ToDo: Add screenshake (part of the cam system)
+//Resolved: Add screenshake (part of the cam system)
 //ToDo: Add components system to entities?
 //ToDo: Implement a good collision system?
 //ToDo: Implement a good component/parenting system?
+
+//Game Features:
+//ToDo: Player engine sound
+//ToDo: Player afterburner sound
+//ToDo: Ambient clouds
+//ToDo: Scrolling background
 
 //Optimizations:
 //ToDo: Implement listener systems for more things rather than the mess currently
@@ -44,7 +50,7 @@ void ofApp::setup(){
 	//ents.add(new Sprite(rm.getImage("images\\f14.png")), 3);
 	//ents.add(new Sprite(rm.getImage("images\\missile.png")), 2);
 
-	//ofHideCursor();
+	ofHideCursor();
 
 	ofSeedRandom();
 }
@@ -58,7 +64,15 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+
+	ofSetBackgroundColor(ofColor::cadetBlue);
+
 	view.cam.begin();
+
+	
+	ofSetColor(ofColor::dimGrey);
+	ofDrawGrid(32.0f, 24, true, false, false, true);
+	
 
 	/*
 	ofSetColor(0, 255, 0);
