@@ -6,6 +6,9 @@
 #include "Sprite.h"
 #include "Player.h"
 #include "Camera.h"
+#include "OceanWaves.h"
+#include "GameState.h"
+#include "MainStage.h"
 
 class ofApp : public ofBaseApp{
 
@@ -13,6 +16,7 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
+		void exit();
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -30,5 +34,8 @@ class ofApp : public ofBaseApp{
 		ResourceManager rm;
 		Input input;
 		View view;
+		GameState* curGameState;
+
+		void changeGameState(GameState* newGameState);
 
 };

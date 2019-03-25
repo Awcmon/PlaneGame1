@@ -40,6 +40,7 @@ public:
 	ofVec2f getPos();
 	ofVec2f toWorld(ofVec2f _localpos);
 	void setScale(float _scale);
+	void setAlpha(float _alpha);
 
 	ofVec2f pos;
 	ofVec2f size;

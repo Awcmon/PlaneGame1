@@ -5,35 +5,41 @@
 //RESOLVED: Implement a proper coordinate system + camera
 //RESOLVED: Implement a proper render order system
 //RESOLVED: Implement a better input system?
-//ToDo: Proper gamestate system instead of this hacked together stuff
-//ToDo: Add lifespan to enemies
-//ToDo: Continuous collision detection for bullets
-//Resolved: Add screenshake (part of the cam system)
-//ToDo: Add components system to entities?
-//ToDo: Implement a good collision system?
-//ToDo: Implement a good component/parenting system?
+//TODO: Proper gamestate system instead of this hacked together stuff
+//TODO: Add lifespan to enemies
+//TODO: Continuous collision detection for bullets
+//RESOLVED: Add screenshake (part of the cam system)
+//TODO: Add components system to entities?
+//TODO: Implement a good collision system?
+//TODO: Implement a good component/parenting system?
 
 //Game Features:
-//ToDo: Player engine sound
-//ToDo: Player afterburner sound
-//ToDo: Ambient clouds
-//ToDo: Scrolling background
+//RESOLVED: Player engine sound
+//RESOLVED: Player afterburner sound
+//TODO: Ambient clouds
+//TODO: Scrolling background
+//TODO: Main menu
+//TODO: Transition from main menu
+//TODO: Implement roll sprites for player
 
 //Optimizations:
-//ToDo: Implement listener systems for more things rather than the mess currently
-//ToDo: Implement object pool for bullets and particles
+//TODO: Implement listener systems for more things rather than the mess currently
+//TODO: Implement object pool for bullets and particles
 //RESOLVED?: Fix reliability problems
-//ToDo: Multi-threading for particles?
+//TODO: Multi-threading for particles?
 //RESOLVED: Make resource manager return pointers instead, to stop possibly expensive data duplication?
+//TODO: Make a way to iterate only through entities in a specific layer(s)
 
 //Testing:
-//ToDo: Test Input class
+//TODO: Test Input class
 //RESOLVED: Test EntitySystem render order system
 
 //NOTE FOR GRADER: "EntitySystem" is just a genericized "SpriteSystem" for the most part.
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+	ofSeedRandom();
+
 	ents.setResourceManager(&rm);
 	ents.setView(&view);
 
@@ -43,36 +49,29 @@ void ofApp::setup(){
 	view.cam.setPosition(ofVec3f(0.0f, 0.0f, 1000));
 	view.cam.enableOrtho();
 
-	Player* player = new Player(rm.getImage("images\\f14.png"), &input);
-	player->setAng(90.0f);
-	ents.add(player, LAYER_FG_MID);
-
-	//ents.add(new Sprite(rm.getImage("images\\f14.png")), 3);
-	//ents.add(new Sprite(rm.getImage("images\\missile.png")), 2);
-
-	ofHideCursor();
-
-	ofSeedRandom();
+	changeGameState(new MainStage());
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 	//cam.setPosition(ofVec3f(ofRandomf(), ofRandomf(), 1000));
+	if (curGameState == nullptr) { return; }
 	view.update();
 	ents.update();
+	curGameState->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+	if (curGameState == nullptr) { return; }
 	ofSetBackgroundColor(ofColor::cadetBlue);
 
 	view.cam.begin();
 
-	
+	/*
 	ofSetColor(ofColor::dimGrey);
 	ofDrawGrid(32.0f, 24, true, false, false, true);
-	
+	*/
 
 	/*
 	ofSetColor(0, 255, 0);
@@ -92,11 +91,22 @@ void ofApp::draw(){
 	ofDrawGrid(32.0f, 24, true, false, false, true);
 	*/
 
+	curGameState->draw();
+
 	view.cam.end();
 
+	/*
 	ofSetColor(ofColor::white);
 	ofDrawBitmapString("Frame Rate: " + std::to_string(ofGetFrameRate()), ofGetWindowWidth() - 170, 15);
 	ofDrawBitmapString("Entities: " + std::to_string(ents.size()), ofGetWindowWidth() - 170, 35);
+	*/
+}
+
+void ofApp::exit()
+{
+	if (curGameState == nullptr) { return; }
+	delete curGameState;
+	curGameState = nullptr;
 }
 
 //--------------------------------------------------------------
@@ -147,6 +157,23 @@ void ofApp::windowResized(int w, int h){
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg){
 
+}
+
+void ofApp::changeGameState(GameState * newGameState)
+{
+	if (curGameState != nullptr) 
+	{ 
+		GameState* oldGameState = curGameState;
+		curGameState = newGameState;
+		delete oldGameState;
+		oldGameState = nullptr;
+	}
+	else
+	{
+		curGameState = newGameState;
+	}
+	curGameState->init(&ents, &rm, &input, &view);
+	curGameState->setup();
 }
 
 //--------------------------------------------------------------

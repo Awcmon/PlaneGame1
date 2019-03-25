@@ -94,6 +94,11 @@ void Entity::setScale(float _scale)
 	scale = _scale;
 }
 
+void Entity::setAlpha(float _alpha)
+{
+	alpha = _alpha;
+}
+
 
 
 EntitySystem::EntitySystem()
