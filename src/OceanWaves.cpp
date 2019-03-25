@@ -19,12 +19,12 @@ void OceanWaves::update()
 	Entity::update();
 	if (pos.x > bounds.x)
 	{
-		pos.x = -bounds.x;
+		pos.x = -bounds.x + ofRandomf() * 50.0f;
 	}
 
 	if (pos.y < -bounds.y)
 	{
-		pos.y = bounds.y;
+		pos.y = bounds.y + ofRandomf() * 50.0f;
 	}
 
 	curLength = maxLength * (sinf(oscillatorFreq*ofGetElapsedTimef() + oscillatorOffset) + 1.0f)*0.5f;
