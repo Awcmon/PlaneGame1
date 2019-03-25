@@ -4,14 +4,15 @@
 OceanWaves::OceanWaves()
 {
 	thickness = 4.0f;
-	maxLength = 48.0f;
+	maxLength = 16.0f + ofRandom(32.0f);
 	setAlpha(100.0f);
 	bounds = ofVec2f(1280.0f, 960.0f)*0.5;
 	createTime = ofGetElapsedTimeMillis();
 
-	oscillatorFreq = (ofRandomf()+1.0f) * 1.0f;
+	oscillatorFreq = (ofRandomf() * 5.0f + 30.0f);
 	oscillatorOffset = ofRandom(100);
-	curLength = 0.0f;
+	//curLength = 0.0f;
+	curLength = maxLength;
 }
 
 void OceanWaves::update()
@@ -27,7 +28,14 @@ void OceanWaves::update()
 		pos.y = bounds.y + ofRandomf() * 50.0f;
 	}
 
-	curLength = maxLength * (sinf(oscillatorFreq*ofGetElapsedTimef() + oscillatorOffset) + 1.0f)*0.5f;
+	//curLength = maxLength * (sinf(oscillatorFreq*ofGetElapsedTimef() + oscillatorOffset) + 1.0f)*0.5f;
+	float newAlpha = 100.0f * (sinf(oscillatorFreq*ofGetElapsedTimef() + oscillatorOffset) + 1.0f)*0.5f;
+	setAlpha(newAlpha);
+	if (newAlpha <= 5.0f)
+	{
+		pos += ofVec2f(ofRandomf()*100.0f, ofRandomf()*100.0f);
+	}
+	//std::cout << 100.0f * (sinf(oscillatorFreq*ofGetElapsedTimef() + oscillatorOffset) + 1.0f)*0.5f << "\n";
 }
 
 void OceanWaves::draw()

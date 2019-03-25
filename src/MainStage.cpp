@@ -10,7 +10,7 @@ void MainStage::setup()
 	{
 		OceanWaves* ow = new OceanWaves();
 		ow->setPos(ofVec2f(ofRandomf()*650.0f, ofRandomf()*500.0f));
-		ow->setVel(ofVec2f(3.0f, -7.0f));
+		ow->setVel(ofVec2f(3.0f, -10.0f));
 		ents->add(ow, LAYER_BG_BOTTOM);
 	}
 

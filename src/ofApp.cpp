@@ -5,19 +5,20 @@
 //RESOLVED: Implement a proper coordinate system + camera
 //RESOLVED: Implement a proper render order system
 //RESOLVED: Implement a better input system?
-//TODO: Proper gamestate system instead of this hacked together stuff
-//TODO: Add lifespan to enemies
+//RESOLVED: Proper gamestate system instead of this hacked together stuff
 //TODO: Continuous collision detection for bullets
 //RESOLVED: Add screenshake (part of the cam system)
 //TODO: Add components system to entities?
 //TODO: Implement a good collision system?
 //TODO: Implement a good component/parenting system?
+//TODO: Implement some sort of parallax system
+//TODO: Move lifespan functionality from Sprite to Entity?
 
 //Game Features:
 //RESOLVED: Player engine sound
 //RESOLVED: Player afterburner sound
 //TODO: Ambient clouds
-//TODO: Scrolling background
+//RESOLVED (sort of): Scrolling background
 //TODO: Main menu
 //TODO: Transition from main menu
 //TODO: Implement roll sprites for player
@@ -31,7 +32,7 @@
 //TODO: Make a way to iterate only through entities in a specific layer(s)
 
 //Testing:
-//TODO: Test Input class
+//RESOLVED: Test Input class
 //RESOLVED: Test EntitySystem render order system
 
 //NOTE FOR GRADER: "EntitySystem" is just a genericized "SpriteSystem" for the most part.
