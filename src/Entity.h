@@ -63,6 +63,13 @@ protected:
 
 //Manages all the entities
 //ToDo: Use an object pool instead of a naive vector
+
+struct AddInfo
+{
+	Entity* ent;
+	int layer;
+};
+
 class EntitySystem
 {
 public:
@@ -88,4 +95,5 @@ public:
 
 private:
 	std::vector<Entity*> entitiesToRemove;
+	std::vector<AddInfo> entitiesToAdd;
 };

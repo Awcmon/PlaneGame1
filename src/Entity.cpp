@@ -158,6 +158,15 @@ void EntitySystem::update()
 	}
 	entitiesToRemove.clear();
 
+	//add the entities to add
+	for (size_t i = 0; i < entitiesToAdd.size(); ++i)
+	{
+		AddInfo addInfo = entitiesToAdd[i];
+		addInfo.ent->setEntitySystem(this);
+		entities[addInfo.layer].push_back(addInfo.ent);
+	}
+	entitiesToAdd.clear();
+
 	//update the remaining entities
 	for (size_t i = 0; i < entities.size(); ++i)
 	{
@@ -185,8 +194,12 @@ void EntitySystem::draw()
 void EntitySystem::add(Entity* ent, int layer)
 {
 	//std::cout << "added\n";
+	/*
 	ent->setEntitySystem(this);
 	entities[layer].push_back(ent);
+	*/
+
+	entitiesToAdd.push_back({ ent, layer });
 }
 
 //queue for deletion at the next update
