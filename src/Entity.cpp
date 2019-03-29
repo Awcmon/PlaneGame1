@@ -147,6 +147,7 @@ void EntitySystem::update()
 
 	//delete entities that are to be deleted 
 	//pretty much taken from Sprite.cpp from emitterCollision from the class code
+	/*
 	for (size_t i = 0; i < entitiesToRemove.size(); i++)
 	{
 		//std::cout << "deleted\n";
@@ -155,6 +156,16 @@ void EntitySystem::update()
 			entities[j].erase(std::remove(entities[j].begin(), entities[j].end(), entitiesToRemove[i]), entities[j].end());
 		}
 		delete entitiesToRemove[i];
+	}
+	entitiesToRemove.clear();
+	*/
+
+	for (const auto& entToRemove : entitiesToRemove) {
+		for (size_t j = 0; j < entities.size(); j++)
+		{
+			entities[j].erase(std::remove(entities[j].begin(), entities[j].end(), entToRemove), entities[j].end());
+		}
+		delete entToRemove;
 	}
 	entitiesToRemove.clear();
 
@@ -205,7 +216,7 @@ void EntitySystem::add(Entity* ent, int layer)
 //queue for deletion at the next update
 void EntitySystem::remove(Entity * ent)
 {
-	entitiesToRemove.push_back(ent);
+	entitiesToRemove.insert(ent);
 }
 
 void EntitySystem::clear()

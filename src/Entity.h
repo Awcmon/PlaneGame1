@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include <unordered_set>
 
 #include "ofMain.h"
 #include "ResourceManager.h"
@@ -94,6 +95,6 @@ public:
 	View* view;
 
 private:
-	std::vector<Entity*> entitiesToRemove;
+	std::unordered_set<Entity*> entitiesToRemove;
 	std::vector<AddInfo> entitiesToAdd;
 };
