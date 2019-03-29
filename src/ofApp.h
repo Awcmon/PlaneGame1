@@ -9,6 +9,7 @@
 #include "OceanWaves.h"
 #include "GameState.h"
 #include "MainStage.h"
+#include "MenuState.h"
 
 class ofApp : public ofBaseApp{
 

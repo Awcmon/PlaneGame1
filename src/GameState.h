@@ -17,6 +17,8 @@ public:
 
 	void init(EntitySystem* _ents, ResourceManager* _rm, Input* _input, View* _view, GameState** _curGameState);
 
+	void changeState(GameState * newGameState);
+
 	EntitySystem* ents;
 	ResourceManager* rm;
 	Input* input;

@@ -9,6 +9,11 @@ void GameState::init(EntitySystem * _ents, ResourceManager * _rm, Input * _input
 	curGameState = _curGameState;
 }
 
+void GameState::changeState(GameState * newGameState)
+{
+	changeGameState(newGameState, ents, rm, input, view, curGameState);
+}
+
 void changeGameState(GameState * newGameState, EntitySystem* ents, ResourceManager* rm, Input* input, View* view, GameState** curGameState)
 {
 	if (*curGameState != nullptr)
