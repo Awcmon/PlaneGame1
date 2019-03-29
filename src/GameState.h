@@ -15,10 +15,14 @@ public:
 	virtual void update() = 0;
 	virtual void draw() = 0;
 
-	void init(EntitySystem* _ents, ResourceManager* _rm, Input* _input, View* _view);
+	void init(EntitySystem* _ents, ResourceManager* _rm, Input* _input, View* _view, GameState** _curGameState);
 
 	EntitySystem* ents;
 	ResourceManager* rm;
 	Input* input;
 	View* view;
+
+	GameState** curGameState;
 };
+
+void changeGameState(GameState * newGameState, EntitySystem* ents, ResourceManager* rm, Input* input, View* view, GameState** curGameState);

@@ -36,6 +36,4 @@ class ofApp : public ofBaseApp{
 		View view;
 		GameState* curGameState;
 
-		void changeGameState(GameState* newGameState);
-
 };

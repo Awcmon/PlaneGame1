@@ -54,7 +54,7 @@ void ofApp::setup(){
 	view.cam.setPosition(ofVec3f(0.0f, 0.0f, 1000));
 	view.cam.enableOrtho();
 
-	changeGameState(new MainStage());
+	changeGameState(new MainStage(), &ents, &rm, &input, &view, &curGameState);
 }
 
 //--------------------------------------------------------------
