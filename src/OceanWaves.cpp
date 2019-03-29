@@ -9,7 +9,7 @@ OceanWaves::OceanWaves()
 	bounds = ofVec2f(1280.0f, 960.0f)*0.5;
 	createTime = ofGetElapsedTimeMillis();
 
-	oscillatorFreq = (ofRandomf() * 5.0f + 30.0f);
+	oscillatorFreq = (ofRandomf() * 5.0f + 15.0f);
 	oscillatorOffset = ofRandom(100);
 	//curLength = 0.0f;
 	curLength = maxLength;

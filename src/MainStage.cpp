@@ -19,7 +19,11 @@ void MainStage::setup()
 
 void MainStage::update()
 {
-
+	if (ofGetElapsedTimeMillis() > lastEnemySpawnTime + 2000)
+	{
+		//Enemy;
+		lastEnemySpawnTime = ofGetElapsedTimeMillis();
+	}
 }
 
 void MainStage::draw()

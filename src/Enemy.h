@@ -8,5 +8,8 @@ class Enemy : public Sprite
 	void update();
 	void setTarget(Entity* _target);
 
+	float targAng;
+	float speed;
+
 	Entity* target;
 };

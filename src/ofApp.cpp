@@ -22,6 +22,7 @@
 //TODO: Main menu
 //TODO: Transition from main menu
 //TODO: Implement roll sprites for player
+//TODO: Implement enemies and stuff
 
 //Optimizations:
 //TODO: Implement listener systems for more things rather than the mess currently
@@ -65,7 +66,8 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	if (curGameState == nullptr) { return; }
-	ofSetBackgroundColor(ofColor::cadetBlue);
+	//ofSetBackgroundColor(ofColor::cadetBlue);
+	ofSetBackgroundColor(ofColor::navy);
 
 	view.cam.begin();
 
