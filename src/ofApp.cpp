@@ -64,6 +64,7 @@ void ofApp::update(){
 	view.update();
 	ents.update();
 	curGameState->update();
+	input.update();
 }
 
 //--------------------------------------------------------------

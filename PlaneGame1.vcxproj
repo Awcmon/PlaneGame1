@@ -188,6 +188,7 @@
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MainStage.cpp" />
+    <ClCompile Include="src\MenuState.cpp" />
     <ClCompile Include="src\OceanWaves.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="src\GameState.h" />
     <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\MainStage.h" />
+    <ClInclude Include="src\MenuState.h" />
     <ClInclude Include="src\OceanWaves.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />

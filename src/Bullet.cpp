@@ -36,20 +36,18 @@ void Bullet::update()
 	*/
 
 	//DANGEROUS. only okay because the return
-	/*
-	for (size_t i = 0; i < ents->entities.size(); ++i)
+	for (size_t i = 0; i < ents->entities[LAYER_FG_MID].size(); ++i)
 	{
-		Entity* curEnt = entSys->entities[i];
+		Entity* curEnt = ents->entities[LAYER_FG_MID][i];
 		if (curEnt->id == "enemy")
 		{
 			if (pos.squareDistance(curEnt->pos) < 1024.0f)
 			{
-				entSys->rm->getSound("sounds\\shipexplode.wav").play();
+				ents->rm->getSound("sounds\\shipexplode.wav")->play();
 				curEnt->remove();
 				remove();
 				return;
 			}
 		}
 	}
-	*/
 }

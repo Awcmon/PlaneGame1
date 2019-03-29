@@ -32,6 +32,11 @@ void MainStage::update()
 
 		nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(2000.0f);
 	}
+
+	if (input->keyPressed(' '))
+	{
+		std::cout << "Space pressed\n";
+	}
 }
 
 void MainStage::draw()

@@ -7,6 +7,7 @@ Input::Input()
 	{
 		keysDown[i] = false;
 	}
+	oldKeysDown = keysDown;
 }
 
 void Input::setView(View * _view)
@@ -32,12 +33,12 @@ bool Input::keyDown(int key)
 
 bool Input::keyPressed(int key)
 {
-	return false;
+	return keysDown[key] && !oldKeysDown[key];
 }
 
 bool Input::keyReleased(int key)
 {
-	return false;
+	return !keysDown[key] && oldKeysDown[key];
 }
 
 bool Input::mouseDown(int button)
@@ -53,9 +54,15 @@ void Input::setMousePos(ofVec2f _mPos)
 void Input::setKeyDown(int key, bool down)
 {
 	keysDown[key] = down;
+	//std::cout << keysDown[key] << " " << oldKeysDown[key] << "\n";
 }
 
 void Input::setMouseDown(int button, bool down)
 {
 	mouseButtonsDown[button] = down;
+}
+
+void Input::update()
+{
+	oldKeysDown = keysDown;
 }
