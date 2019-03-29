@@ -3,17 +3,21 @@
 Sprite::Sprite()
 {
 	hasImage = false;
-	lifespan = -1;
-	createTime = ofGetElapsedTimeMillis();
-	setID("sprite");
+	init();
 }
 
 Sprite::Sprite(ofImage* _image)
 {
 	setImage(_image);
+	init();
+}
+
+void Sprite::init()
+{
 	lifespan = -1;
 	createTime = ofGetElapsedTimeMillis();
 	setID("sprite");
+	curAnim = "idle";
 }
 
 void Sprite::update()
@@ -22,6 +26,15 @@ void Sprite::update()
 	if (lifespan != -1 && ofGetElapsedTimeMillis() > createTime + lifespan)
 	{
 		remove();
+	}
+
+	//animation stuff
+	AnimData curAnimData = anims[curAnim];
+	if (ofGetElapsedTimeMillis() > lastAnimTime + curAnimData.period)
+	{
+		seqInd = (seqInd + 1) % curAnimData.frameSeq.size();
+		lastAnimTime = ofGetElapsedTimeMillis();
+		frameNumber = curAnimData.frameSeq[seqInd];
 	}
 }
 
@@ -48,7 +61,8 @@ void Sprite::draw()
 
 		ofEnableAlphaBlending();
 		ofSetColor(color, alpha);
-		image->draw(0.0f, 0.0f);
+		//image->draw(0.0f, 0.0f);
+		image->drawSubsection(0.0f, 0.0f, size.x, size.y, size.x*(frameNumber % numRows), size.y*(frameNumber / numRows));
 		ofDisableAlphaBlending();
 
 		ofPopMatrix();
@@ -60,6 +74,35 @@ void Sprite::setImage(ofImage* _image)
 	image = _image;
 	size = ofVec2f(image->getWidth(), image->getHeight());
 	hasImage = true;
+
+	slice(1, 1); //assume it is not a sprite sheet.
+	anims["idle"] = { 10000, {0} }; //set a default anim
+	setAnim("idle"); //set to default idle anim
+}
+
+void Sprite::slice(int _numRows, int _numCols)
+{
+	numRows = _numRows;
+	numCols = _numCols;
+	sheetSize = ofVec2f(image->getWidth(), image->getHeight());
+	size = ofVec2f(sheetSize.x / numRows, sheetSize.y / numCols);
+	frameNumber = 0;
+}
+
+void Sprite::setFrame(int _frameNumber)
+{
+	frameNumber = _frameNumber;
+}
+
+void Sprite::setAnim(std::string _anim)
+{
+	if (curAnim != _anim)
+	{
+		curAnim = _anim;
+		seqInd = 0;
+		lastAnimTime = ofGetElapsedTimeMillis();
+		frameNumber = anims[curAnim].frameSeq[seqInd];
+	}
 }
 
 void Sprite::setLifespan(int _lifespan)
