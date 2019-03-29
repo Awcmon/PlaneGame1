@@ -30,7 +30,7 @@ void MainStage::update()
 		enemy->setTarget(player);
 		ents->add(enemy, LAYER_FG_MID);
 
-		nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(2000.0f);
+		nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(500.0f);
 	}
 
 	if (input->keyPressed(' '))
@@ -44,4 +44,7 @@ void MainStage::draw()
 	ofSetColor(ofColor::white);
 	ofDrawBitmapString("Frame Rate: " + std::to_string(ofGetFrameRate()), ofGetWindowWidth() / 2 - 170, ofGetWindowHeight() / 2 - 15);
 	ofDrawBitmapString("Entities: " + std::to_string(ents->size()), ofGetWindowWidth() / 2 - 170, ofGetWindowHeight() / 2 - 35);
+	ofNoFill();
+	ofSetColor(ofColor::white, 100);
+	ofDrawRectangle(input->getMouseWorldPos().x, input->getMouseWorldPos().y - 32, 64, 64);
 }

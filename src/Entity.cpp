@@ -213,7 +213,7 @@ void EntitySystem::clear()
 		}
 		entities[i].clear();
 	}
-	entities.clear();
+	//entities.clear();
 }
 
 size_t EntitySystem::size()
