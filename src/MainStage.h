@@ -10,5 +10,7 @@ public:
 	void update();
 	void draw();
 
-	uint64_t lastEnemySpawnTime;
+	Player* player;
+
+	uint64_t nextEnemySpawnTime;
 };

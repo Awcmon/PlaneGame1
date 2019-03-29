@@ -4,6 +4,7 @@
 
 class Enemy : public Sprite
 {
+public:
 	Enemy();
 	void update();
 	void setTarget(Entity* _target);
