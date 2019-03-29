@@ -10,12 +10,20 @@ Entity::Entity(std::string _id, ofVec2f _pos, float _scale, float _ang, ofVec2f 
 	owner = nullptr;
 	color = ofColor(255, 255, 255);
 	alpha = 255;
+	mass = 1.0f;
+	accel = ofVec2f(0.0f, 0.0f);
 }
 
 //ToDo: Make this framerate independent maybe?
 void Entity::update()
 {
-	pos += vel;
+	//float dt = 1.0 / ofGetFrameRate();
+	float dt = 1.0f;
+
+	pos += vel * dt;
+	vel += accel * dt;
+	//std::cout << pos << "\n";
+	accel = ofVec2f(0.0f, 0.0f); //clear accel/forces. a continuous force must be applied each frame.
 }
 
 void Entity::draw()
@@ -97,6 +105,11 @@ void Entity::setScale(float _scale)
 void Entity::setAlpha(float _alpha)
 {
 	alpha = _alpha;
+}
+
+void Entity::applyForce(ofVec2f _force)
+{
+	accel += _force * (1.0f / mass);
 }
 
 

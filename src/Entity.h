@@ -41,6 +41,7 @@ public:
 	ofVec2f toWorld(ofVec2f _localpos);
 	void setScale(float _scale);
 	void setAlpha(float _alpha);
+	void applyForce(ofVec2f _force);
 
 	ofVec2f pos;
 	ofVec2f size;
@@ -49,6 +50,8 @@ public:
 	float ang;
 	ofColor color;
 	int alpha;
+	float mass;
+	ofVec2f accel;
 	
 	Entity* owner;
 
