@@ -13,6 +13,8 @@
 //TODO: Implement a good component/parenting system?
 //TODO: Implement some sort of parallax system
 //TODO: Move lifespan functionality from Sprite to Entity?
+//RESOLVED: Add physics
+//TODO: Implement AnimatedSprite
 
 //Game Features:
 //RESOLVED: Player engine sound
@@ -23,6 +25,7 @@
 //TODO: Transition from main menu
 //TODO: Implement roll sprites for player
 //TODO: Implement enemies and stuff
+//TODO: Implement a proper hud
 
 //Optimizations:
 //TODO: Implement listener systems for more things rather than the mess currently
@@ -160,23 +163,6 @@ void ofApp::windowResized(int w, int h){
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg){
 
-}
-
-void ofApp::changeGameState(GameState * newGameState)
-{
-	if (curGameState != nullptr) 
-	{ 
-		GameState* oldGameState = curGameState;
-		curGameState = newGameState;
-		delete oldGameState;
-		oldGameState = nullptr;
-	}
-	else
-	{
-		curGameState = newGameState;
-	}
-	curGameState->init(&ents, &rm, &input, &view);
-	curGameState->setup();
 }
 
 //--------------------------------------------------------------
