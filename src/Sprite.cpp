@@ -62,7 +62,7 @@ void Sprite::draw()
 		ofEnableAlphaBlending();
 		ofSetColor(color, alpha);
 		//image->draw(0.0f, 0.0f);
-		image->drawSubsection(0.0f, 0.0f, size.x, size.y, size.x*(frameNumber % numRows), size.y*(frameNumber / numRows));
+		image->drawSubsection(0.0f, 0.0f, size.x, size.y, size.x*(frameNumber % numCols), size.y*(frameNumber / numCols));
 		ofDisableAlphaBlending();
 
 		ofPopMatrix();
@@ -72,11 +72,11 @@ void Sprite::draw()
 void Sprite::setImage(ofImage* _image)
 {
 	image = _image;
-	size = ofVec2f(image->getWidth(), image->getHeight());
+	sheetSize = ofVec2f(image->getWidth(), image->getHeight());
 	hasImage = true;
 
 	slice(1, 1); //assume it is not a sprite sheet.
-	anims["idle"] = { 10000, {0} }; //set a default anim
+	anims["idle"] = { 100000000, {0} }; //set a default anim
 	setAnim("idle"); //set to default idle anim
 }
 
@@ -85,7 +85,7 @@ void Sprite::slice(int _numRows, int _numCols)
 	numRows = _numRows;
 	numCols = _numCols;
 	sheetSize = ofVec2f(image->getWidth(), image->getHeight());
-	size = ofVec2f(sheetSize.x / numRows, sheetSize.y / numCols);
+	size = ofVec2f(sheetSize.x / numCols, sheetSize.y / numRows);
 	frameNumber = 0;
 }
 

@@ -2,7 +2,7 @@
 
 void MainStage::setup()
 {
-	Player* player = new Player(rm->getImage("images\\f14.png"), input);
+	Player* player = new Player(rm->getImage("images\\f14_sheet.png"), input);
 	player->setAng(90.0f);
 	ents->add(player, LAYER_FG_MID);
 

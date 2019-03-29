@@ -8,6 +8,11 @@ Player::Player(ofImage* _image, Input* _input)
 	lastShootTime = 0;
 	shootPeriod = 20;
 	shootSpeed = 40.0f;
+
+	slice(1, 3);
+	anims["idle"] = { 100000000, {0} };
+	anims["right"] = { 100000000,{ 1 } };
+	anims["left"] = { 100000000,{ 2 } };
 }
 
 void Player::handleInput()
@@ -47,6 +52,20 @@ void Player::update()
 
 	//approach target angle (smoothed)
 	ang = approachAngle(ang, targAng, angleDifference(targAng, ang)*0.3f);
+	ang = normalizeAngle(ang);
+
+	if (ang < 70.0f)
+	{
+		setAnim("right");
+	}
+	else if (ang > 110.0f)
+	{
+		setAnim("left");
+	}
+	else
+	{
+		setAnim("idle");
+	}
 	
 	if (input->mouseDown(0) && ofGetElapsedTimeMillis() > lastShootTime + shootPeriod)
 	{

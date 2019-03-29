@@ -14,7 +14,7 @@
 //TODO: Implement some sort of parallax system
 //TODO: Move lifespan functionality from Sprite to Entity?
 //RESOLVED: Add physics
-//TODO: Implement AnimatedSprite
+//RESOLVED: Implement AnimatedSprite
 
 //Game Features:
 //RESOLVED: Player engine sound
@@ -23,7 +23,7 @@
 //RESOLVED (sort of): Scrolling background
 //TODO: Main menu
 //TODO: Transition from main menu
-//TODO: Implement roll sprites for player
+//RESOLVED: Implement roll sprites for player
 //TODO: Implement enemies and stuff
 //TODO: Implement a proper hud
 
