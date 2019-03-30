@@ -9,4 +9,13 @@ public:
 	void setup();
 	void update();
 	void draw();
+
+	float titleTargY;
+	float titleY;
+
+	float clickTargX;
+	float clickX;
+
+	Sprite* title;
+	Sprite* clicktobegin;
 };

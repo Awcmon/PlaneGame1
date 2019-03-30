@@ -26,6 +26,11 @@
 //RESOLVED: Implement roll sprites for player
 //TODO: Implement enemies and stuff
 //TODO: Implement a proper hud
+//TODO: More realistic waves in menu
+//TODO: Menu transition to main stage
+//TODO: Add music
+//TODO: Better shoot sound (probably use a loop)
+//TODO: Implement explosions
 
 //Optimizations:
 //TODO: Implement listener systems for more things rather than the mess currently

@@ -7,8 +7,8 @@
 class Input
 {
 	ofVec2f mPos;
-	std::array<bool, 512> keysDown;
-	std::array<bool, 512> oldKeysDown;
+	std::array<bool, 100000> keysDown;
+	std::array<bool, 100000> oldKeysDown;
 	std::array<bool, 3> mouseButtonsDown;
 	View* view;
 public:
