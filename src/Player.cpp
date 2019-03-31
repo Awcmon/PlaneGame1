@@ -16,6 +16,9 @@ Player::Player(ofImage* _image, Input* _input)
 	anims["left"] = { 100000000,{ 2 } };
 
 	score = 0;
+
+	heat = 0.0f;
+	overheated = false;
 }
 
 void Player::handleInput()
@@ -69,8 +72,10 @@ void Player::update()
 	{
 		setAnim("idle");
 	}
+
+	heat = approach(heat, 0.0f, heat*0.015f);
 	
-	if (input->mouseDown(0) && ofGetElapsedTimeMillis() > lastShootTime + shootPeriod)
+	if (input->mouseDown(0) && ofGetElapsedTimeMillis() > lastShootTime + shootPeriod && heat < 100.0f && !overheated)
 	{
 		Bullet* bullet = new Bullet(ents->rm->getImage("images\\bullet2.png"));
 		bullet->setVel(ofVec2f(shootSpeed, 0.0f).rotate(ang));
@@ -79,13 +84,13 @@ void Player::update()
 		bullet->setOwner(this);
 
 		Particle* shootPuff = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
-		shootPuff->setVel(ofVec2f(ofRandomf() * 10.0f, -30.0f + ofRandomf() * 15.0f));
+		shootPuff->setVel(ofVec2f(ofRandomf() * 5.0f, -20.0f + ofRandomf() * 10.0f));
 		shootPuff->setAng(ofRandomf()*180.0f);
 		shootPuff->setPos(toWorld(ofVec2f(32.0f, 0.0f)));
 		shootPuff->setStartScale(0.4f);
 		shootPuff->setEndScale(3.0f);
 		shootPuff->setLifespan(100);
-		shootPuff->setStartAlpha(255.0f);
+		shootPuff->setStartAlpha(200.0f);
 		shootPuff->setEndAlpha(0.0f);
 		shootPuff->setAngVel(30.0f);
 		ents->add(shootPuff, LAYER_FG_BOTTOM);
@@ -96,10 +101,49 @@ void Player::update()
 
 		//ents->rm->getSound("sounds\\rac_fire1.wav")->play();
 		ents->rm->playSoundLoop("soundloops\\shootloop_100sp.wav");
+
+		heat += 3.3f;
+
 		lastShootTime = ofGetElapsedTimeMillis();
 	}
 	
-	if (!input->mouseDown(0))
+	if (heat > 80.0f)
+	{
+		ents->rm->playSoundLoop("soundloops\\caution2.wav");
+	}
+	else
+	{
+		ents->rm->stopSoundLoop("soundloops\\caution2.wav");
+	}
+
+	if (heat >= 100.0f)
+	{
+		overheated = true;
+		ents->rm->playSoundLoop("soundloops\\damagealarm.wav");
+	}
+
+	if (overheated)
+	{
+		Particle* overheatPuff = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
+		overheatPuff->setVel(ofVec2f(ofRandomf() * 5.0f, -20.0f + ofRandomf() * 5.0f));
+		overheatPuff->setAng(ofRandomf()*180.0f);
+		overheatPuff->setPos(toWorld(ofVec2f(32.0f, 0.0f)));
+		overheatPuff->setStartScale(0.4f);
+		overheatPuff->setEndScale(3.0f);
+		overheatPuff->setLifespan(200);
+		overheatPuff->setStartAlpha(150.0f);
+		overheatPuff->setEndAlpha(0.0f);
+		overheatPuff->setAngVel(30.0f);
+		ents->add(overheatPuff, LAYER_FG_BOTTOM);
+
+		if (heat <= 5.0f)
+		{
+			ents->rm->stopSoundLoop("soundloops\\damagealarm.wav");
+			overheated = false;
+		}
+	}
+	
+	if (!input->mouseDown(0) || overheated)
 	{
 		ents->rm->stopSoundLoop("soundloops\\shootloop_100sp.wav");
 	}

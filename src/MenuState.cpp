@@ -133,8 +133,8 @@ void MenuState::update()
 		{
 			Particle* white = new Particle(ents->rm->getImage("images\\white.png"));
 			white->setPos(ofVec2f(0.0f, 0.0f));
-			white->setStartScale(20.0f);
-			white->setEndScale(20.0f);
+			white->setStartScale(30.0f);
+			white->setEndScale(30.0f);
 			white->setLifespan(1200);
 			white->setStartAlpha(0.0f);
 			white->setEndAlpha(500.0f);

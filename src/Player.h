@@ -20,5 +20,8 @@ public:
 	uint64_t shootPeriod;
 	float shootSpeed;
 
+	float heat;
+	bool overheated;
+
 	uint64_t score;
 };

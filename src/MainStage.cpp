@@ -17,8 +17,8 @@ void MainStage::setup()
 
 	Particle* white = new Particle(ents->rm->getImage("images\\white.png"));
 	white->setPos(ofVec2f(0.0f, 0.0f));
-	white->setStartScale(20.0f);
-	white->setEndScale(20.0f);
+	white->setStartScale(30.0f);
+	white->setEndScale(30.0f);
 	white->setLifespan(2000);
 	white->setStartAlpha(600.0f);
 	white->setEndAlpha(0.0f);
@@ -125,4 +125,10 @@ void MainStage::draw()
 		//ofDrawBitmapString("WARNING", warningPoints[i].x, warningPoints[i].y);
 		rm->getImage("images\\warning.png")->draw(warningPoints[i].pos);
 	}
+
+	ofFill();
+	ofSetColor(ofColor::white, 50);
+	ofDrawRectangle(input->getMouseWorldPos().x, input->getMouseWorldPos().y + 4, 64, 8); //heat meter
+	ofSetColor(ofColor::red, 50);
+	ofDrawRectangle(input->getMouseWorldPos().x, input->getMouseWorldPos().y+4, 64*(player->heat /100.0f), 8); //heat meter
 }

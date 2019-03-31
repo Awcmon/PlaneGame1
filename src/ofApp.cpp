@@ -37,6 +37,9 @@
 //TODO: Homing missile enemy
 //RESOLVED: Add enemy flyby sound
 //TODO: Implement player gun overheating
+//TODO: Make enemies shoot when close
+//TODO: Implement player getting killed
+//TODO: Ways to get back to main menu
 
 //Optimizations:
 //TODO: Implement listener systems for more things rather than the mess currently
