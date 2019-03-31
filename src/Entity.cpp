@@ -26,7 +26,7 @@ void Entity::update()
 	//std::cout << pos << "\n";
 	accel = ofVec2f(0.0f, 0.0f); //clear accel/forces. a continuous force must be applied each frame.
 
-	ang = ang * angVel * dt;
+	ang += angVel * dt;
 }
 
 void Entity::draw()
