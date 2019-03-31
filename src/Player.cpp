@@ -110,6 +110,32 @@ void Player::update()
 
 		ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * 3.0f);
 
+		Particle* burner1 = new Particle(ents->rm->getImage("images\\bang32_1.png"));
+		burner1->setVel(getVel()*0.9f);
+		burner1->setAng(ofRandomf()*180.0f);
+		burner1->setAngVel(ofRandomf()*40.0f);
+		burner1->setPos(toWorld(ofVec2f(-30.0f, 6.0f)));
+		burner1->setStartScale(0.4f);
+		burner1->setEndScale(0.0f);
+		burner1->setLifespan(55);
+		burner1->setStartAlpha(255.0f);
+		burner1->setEndAlpha(0.0f);
+		burner1->setColor(ofColor::orange);
+		ents->add(burner1, LAYER_FG_BOTTOM);
+
+		Particle* burner2 = new Particle(ents->rm->getImage("images\\bang32_1.png"));
+		burner2->setVel(getVel()*0.9f);
+		burner2->setAng(ofRandomf()*180.0f);
+		burner2->setAngVel(ofRandomf()*40.0f);
+		burner2->setPos(toWorld(ofVec2f(-30.0f, -6.0f)));
+		burner2->setStartScale(0.4f);
+		burner2->setEndScale(0.0f);
+		burner2->setLifespan(55);
+		burner2->setStartAlpha(255.0f);
+		burner2->setEndAlpha(0.0f);
+		burner2->setColor(ofColor::orange);
+		ents->add(burner2, LAYER_FG_BOTTOM);
+
 		Particle* enginePuff1 = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
 		enginePuff1->setVel(ofVec2f(ofRandomf() * 2.0f, -75.0f + ofRandomf() * 25.0f));
 		enginePuff1->setAng(ofRandomf()*180.0f);

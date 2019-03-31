@@ -12,7 +12,7 @@
 //TODO: Implement a good collision system?
 //TODO: Implement a good component/parenting system?
 //TODO: Implement some sort of parallax system
-//TODO: Move lifespan functionality from Sprite to Entity?
+//RESOLVED: Move lifespan functionality from Sprite to Entity?
 //RESOLVED: Add physics
 //RESOLVED: Implement AnimatedSprite
 
