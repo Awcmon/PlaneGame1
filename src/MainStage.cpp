@@ -25,7 +25,7 @@ void MainStage::setup()
 	white->setColor(ofColor::black);
 	ents->add(white, LAYER_FG_TOP);
 
-	SlowText* slowText = new SlowText("International Waters\nBering Sea\n1984\n1800 hours", 75);
+	SlowText* slowText = new SlowText("International Waters\nBering Sea\nMay 3rd, 1984\n1800 hours", 75);
 	slowText->setPos(ofVec2f(-100.0f, 0.0f));
 	slowText->lifespan = 8500;
 	ents->add(slowText, LAYER_FG_TOP);

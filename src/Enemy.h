@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Sprite.h"
+#include "Particle.h"
 
 class Enemy : public Sprite
 {
