@@ -48,6 +48,27 @@ ResourceManager::ResourceManager()
 	}
 }
 
+ResourceManager::~ResourceManager()
+{
+	for (auto const& x : images)
+	{
+		images[x.first].clear();
+	}
+	images.clear();
+
+	for (auto const& x : sounds)
+	{
+		sounds[x.first].unload();
+	}
+	sounds.clear();
+
+	for (auto const& x : sounds)
+	{
+		soundloops[x.first].unload();
+	}
+	soundloops.clear();
+}
+
 ofImage* ResourceManager::getImage(std::string path)
 {
 	return &images[path];

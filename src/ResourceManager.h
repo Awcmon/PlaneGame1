@@ -8,6 +8,7 @@ class ResourceManager
 {
 public:
 	ResourceManager();
+	~ResourceManager();
 	ofImage* getImage(std::string path);
 	ofSoundPlayer* getSound(std::string path);
 	ofSoundPlayer* getSoundLoop(std::string path);
