@@ -6,7 +6,7 @@ Enemy::Enemy()
 	//lifeSpan = 10000;
 	createTime = ofGetElapsedTimeMillis();
 	lifespan = 4000;
-	speed = 35.0f;
+	speed = 25.0f;
 	target = nullptr;
 	flybySounded = false;
 }
@@ -18,7 +18,7 @@ void Enemy::update()
 	targAng = ofVec2f(1.0f, 0.0f).angle((target->getPos() - pos));
 	//ang = approachAngle(ang, targAng, angleDifference(targAng, ang)*0.02f);
 	ang = approachAngle(ang, targAng, 0.1f);
-	vel = ofVec2f(speed, 0.0f).getRotated(ang);
+	vel = ofVec2f(speed, 0.0f).getRotated(ang) + ofVec2f(0.0f, -15.0f);
 	if ((target->getPos() - pos).lengthSquared() < 600.0f * 600.0f && !flybySounded)
 	{
 		ents->rm->getSound("sounds\\missile_launch3.wav")->play();
