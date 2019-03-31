@@ -50,6 +50,7 @@ void OceanWaves::draw()
 
 	ofEnableAlphaBlending();
 	ofSetColor(color, alpha);
+	ofFill();
 	ofDrawRectangle(pos.x + curLength/2.0f, pos.y, curLength, thickness);
 	ofDisableAlphaBlending();
 
