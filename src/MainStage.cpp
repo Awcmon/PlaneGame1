@@ -55,6 +55,8 @@ void MainStage::update()
 		Entity* curEnt = ents->entities[LAYER_FG_MID][i];
 		if (curEnt->getID() == "enemy")
 		{
+
+			if (abs(curEnt->getVel().angle(player->getPos() - curEnt->getPos())) > 90.0f) { continue; }
 			ofVec2f q = curEnt->getPos();
 			ofVec2f s = player->getPos() - curEnt->getPos();
 
