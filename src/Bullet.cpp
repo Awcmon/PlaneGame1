@@ -87,7 +87,8 @@ void Bullet::update()
 				bang->setStartScale(0.0f);
 				bang->setEndScale(4.0f);
 				bang->setLifespan(55);
-				bang->setColor(ofColor(1.0f, 0.0f, 0.0f) * 200.0f);
+				//bang->setColor(ofColor(1.0f, 0.0f, 0.0f) * 200.0f);
+				bang->setColor(ofColor::orangeRed);
 				bang->setStartAlpha(255.0f);
 				bang->setEndAlpha(100.0f);
 				ents->add(bang, LAYER_FG_BOTTOM);
