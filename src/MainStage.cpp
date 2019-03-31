@@ -37,6 +37,28 @@ void MainStage::update()
 	{
 		std::cout << "Space pressed\n";
 	}
+
+	//update radar
+	warningPoints.clear();
+	for (size_t i = 0; i < ents->entities[LAYER_FG_MID].size(); ++i)
+	{
+		Entity* curEnt = ents->entities[LAYER_FG_MID][i];
+		if (curEnt->getID() == "enemy")
+		{
+			ofVec2f q = curEnt->getPos();
+			ofVec2f s = player->getPos() - curEnt->getPos();
+			ofVec2f p = ofVec2f(-1280.0f / 2.0f + 32.0f, 960.0f/2.0f - 32.0f);
+			ofVec2f r = ofVec2f(1280.0f / 2.0f - 32.0f, 960.0f / 2.0f - 32.0f) - p;
+
+			float t = cross2d((q - p), s) / cross2d(r, s);
+			float u = cross2d((q - p), r) / cross2d(r, s);
+
+			if (cross2d(r, s) != 0 && t >= 0.0f && t <= 1.0f && u >= 0.0f && u <= 1.0f)
+			{
+				warningPoints.push_back(p + t * r);
+			}
+		}
+	}
 }
 
 void MainStage::draw()
@@ -44,7 +66,18 @@ void MainStage::draw()
 	ofSetColor(ofColor::white);
 	ofDrawBitmapString("Frame Rate: " + std::to_string(ofGetFrameRate()), ofGetWindowWidth() / 2 - 170, ofGetWindowHeight() / 2 - 15);
 	ofDrawBitmapString("Entities: " + std::to_string(ents->size()), ofGetWindowWidth() / 2 - 170, ofGetWindowHeight() / 2 - 35);
+
+	ofDrawBitmapString("Score: " + std::to_string(player->score), -ofGetWindowWidth() / 2, ofGetWindowHeight() / 2 - 15);
 	ofNoFill();
 	ofSetColor(ofColor::white, 100);
 	ofDrawRectangle(input->getMouseWorldPos().x, input->getMouseWorldPos().y - 32, 64, 64);
+
+	ofDrawRectangle(0.0f, 0.0f, 1280 - 64, 960 - 64); //radar border
+
+	for (size_t i = 0; i < warningPoints.size(); ++i)
+	{
+		ofSetColor(ofColor::yellow, 200);
+		//ofDrawBitmapString("WARNING", warningPoints[i].x, warningPoints[i].y);
+		rm->getImage("images\\warning.png")->draw(warningPoints[i]);
+	}
 }

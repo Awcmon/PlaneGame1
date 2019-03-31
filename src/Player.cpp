@@ -9,10 +9,13 @@ Player::Player(ofImage* _image, Input* _input)
 	shootPeriod = 20;
 	shootSpeed = 40.0f;
 
+	//set up animations
 	slice(1, 3);
 	anims["idle"] = { 100000000, {0} };
 	anims["right"] = { 100000000,{ 1 } };
 	anims["left"] = { 100000000,{ 2 } };
+
+	score = 0;
 }
 
 void Player::handleInput()
@@ -73,6 +76,7 @@ void Player::update()
 		bullet->setVel(ofVec2f(shootSpeed, 0.0f).rotate(ang));
 		bullet->setAng(ang);
 		bullet->setPos(toWorld(ofVec2f(32.0f, 0.0f)));
+		bullet->setOwner(this);
 
 		Particle* shootPuff = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
 		shootPuff->setVel(ofVec2f(ofRandomf() * 10.0f, -30.0f + ofRandomf() * 15.0f));

@@ -2,6 +2,7 @@
 
 #include <math.h>
 #include <algorithm>
+#include <ofMain.h>
 
 //approach a value
 inline float approach(float value, float target, float increment)
@@ -55,4 +56,9 @@ inline float approachAngle(float cur, float target, float inc)
 {
 	float diff = angleDifference(target, cur);
 	return approach(cur, cur + diff, inc);
+}
+
+inline float cross2d(ofVec2f v, ofVec2f w)
+{
+	return v.x * w.y - v.y * w.x;
 }

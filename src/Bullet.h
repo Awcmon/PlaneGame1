@@ -2,6 +2,7 @@
 
 #include "Sprite.h"
 #include "Particle.h"
+#include "Player.h"
 
 class Bullet : public Sprite
 {

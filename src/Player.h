@@ -19,4 +19,6 @@ public:
 	uint64_t lastShootTime;
 	uint64_t shootPeriod;
 	float shootSpeed;
+
+	uint64_t score;
 };

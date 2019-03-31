@@ -2,6 +2,8 @@
 
 #include "GameState.h"
 #include "Enemy.h"
+#include "unordered_set"
+#include "util.h"
 
 class MainStage : public GameState
 {
@@ -13,4 +15,6 @@ public:
 	Player* player;
 
 	uint64_t nextEnemySpawnTime;
+
+	std::vector<ofVec2f> warningPoints;
 };

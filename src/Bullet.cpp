@@ -43,6 +43,8 @@ void Bullet::update()
 		{
 			if (pos.squareDistance(curEnt->pos) < 1024.0f)
 			{
+				((Player*)owner)->score += 100;
+
 				ents->rm->getSound("sounds\\explosion_generic_small_close_0"+ std::to_string((rand() % 3) + 1) + ".wav")->play();
 
 				for (int i = 0; i < 10; ++i)

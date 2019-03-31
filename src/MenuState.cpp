@@ -45,7 +45,7 @@ void MenuState::update()
 	}
 	clicktobegin->setPos(ofVec2f(clickX, -350.0f));
 
-	clicktobegin->setAlpha(255.0f * (sinf(4.0f*ofGetElapsedTimef()) + 1.0f)*0.5f);
+	clicktobegin->setAlpha(200.0f * (sinf(5.0f*ofGetElapsedTimef()) + 1.0f)*0.5f + 55.0f);
 
 	if (input->keyPressed('r'))
 	{

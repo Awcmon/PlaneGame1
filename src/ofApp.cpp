@@ -29,7 +29,11 @@
 //TODO: Menu transition to main stage
 //TODO: Add music
 //RESOLVED: Better shoot sound (probably use a loop)
-//TODO: Implement explosions
+//RESOLVED: Implement explosions
+//TODO: Early warning HUD
+//TODO: Lingering smoke, debris to explosions
+//TODO: Explosion screenshake
+//TODO: Make explosions dependent on enemy velocity?
 
 //Optimizations:
 //TODO: Implement listener systems for more things rather than the mess currently
