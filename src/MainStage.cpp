@@ -46,7 +46,7 @@ void MainStage::update()
 	{
 		int r = rand() % 4;
 
-		if (r == 0)
+		if (r == 0) //top
 		{
 			Enemy* enemy = new Enemy();
 			enemy->setImage(rm->getImage("images\\enemy.png"));
@@ -57,24 +57,24 @@ void MainStage::update()
 
 			nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(750.0f);
 		}
-		else if (r == 1)
+		else if (r == 1) //bottom
 		{
 			Enemy* enemy = new Enemy();
 			enemy->setImage(rm->getImage("images\\enemy.png"));
 			enemy->setPos(ofVec2f(ofRandomf() * 800.0f, -1500.0f));
 			enemy->setAng(90.0f);
 			enemy->setTarget(player);
-			enemy->speed = ofRandomf() * 5.0f + 25.0f;
+			enemy->speed = ofRandomf() * 5.0f + 35.0f;
 			enemy->setLifespan(7000);
 			ents->add(enemy, LAYER_FG_MID);
 
 			nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(750.0f);
 		}
-		else if (r == 2)
+		else if (r == 2) //right
 		{
 			Enemy* enemy = new Enemy();
 			enemy->setImage(rm->getImage("images\\enemy.png"));
-			enemy->setPos(ofVec2f(2500.0f, ofRandomf() * 800.0f + 1800.0f));
+			enemy->setPos(ofVec2f(2500.0f, ofRandomf() * 800.0f + 2200.0f));
 			enemy->setAng(180.0f);
 			enemy->setTarget(player);
 			enemy->speed = ofRandomf() * 5.0f + 25.0f;
@@ -83,11 +83,11 @@ void MainStage::update()
 
 			nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(750.0f);
 		}
-		else if (r == 3)
+		else if (r == 3) //left
 		{
 			Enemy* enemy = new Enemy();
 			enemy->setImage(rm->getImage("images\\enemy.png"));
-			enemy->setPos(ofVec2f(-2500.0f, ofRandomf() * 800.0f + 1800.0f));
+			enemy->setPos(ofVec2f(-2500.0f, ofRandomf() * 800.0f + 2200.0f));
 			enemy->setAng(0.0f);
 			enemy->setTarget(player);
 			enemy->speed = ofRandomf() * 5.0f + 25.0f;

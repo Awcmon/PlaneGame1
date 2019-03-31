@@ -43,7 +43,7 @@ void Bullet::update()
 		{
 			if (pos.squareDistance(curEnt->pos) < 1024.0f)
 			{
-				((Player*)owner)->score += 100;
+				((Player*)owner)->score += (int)curEnt->getVel().lengthSquared();
 
 				if (pos.lengthSquared() < 600.0f * 600.0f)
 				{

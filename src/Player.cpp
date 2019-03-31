@@ -95,7 +95,7 @@ void Player::update()
 		shootPuff->setAngVel(30.0f);
 		ents->add(shootPuff, LAYER_FG_BOTTOM);
 
-		ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * 5.0f);
+		ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * 8.0f);
 
 		ents->add(bullet, LAYER_FG_BOTTOM);
 
