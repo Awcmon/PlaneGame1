@@ -43,6 +43,7 @@ public:
 	void setScale(float _scale);
 	void setAlpha(float _alpha);
 	void applyForce(ofVec2f _force);
+	void setAngVel(float _angVel);
 
 	ofVec2f pos;
 	ofVec2f size;
@@ -53,6 +54,7 @@ public:
 	int alpha;
 	float mass;
 	ofVec2f accel;
+	float angVel;
 	
 	Entity* owner;
 

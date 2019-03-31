@@ -21,8 +21,7 @@
 //RESOLVED: Player afterburner sound
 //TODO: Ambient clouds
 //RESOLVED (sort of): Scrolling background
-//TODO: Main menu
-//TODO: Transition from main menu
+//RESOLVED: Main menu
 //RESOLVED: Implement roll sprites for player
 //TODO: Implement enemies and stuff
 //TODO: Implement a proper hud
