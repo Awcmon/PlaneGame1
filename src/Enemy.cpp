@@ -8,6 +8,7 @@ Enemy::Enemy()
 	lifespan = 4000;
 	speed = 35.0f;
 	target = nullptr;
+	flybySounded = false;
 }
 
 void Enemy::update()
@@ -18,6 +19,11 @@ void Enemy::update()
 	//ang = approachAngle(ang, targAng, angleDifference(targAng, ang)*0.02f);
 	ang = approachAngle(ang, targAng, 0.1f);
 	vel = ofVec2f(speed, 0.0f).getRotated(ang);
+	if (pos.lengthSquared() < 400.0f * 400.0f && !flybySounded)
+	{
+		ents->rm->getSound("sounds\\missile_launch1.wav")->play();
+		flybySounded = true;
+	}
 }
 
 void Enemy::setTarget(Entity * _target)

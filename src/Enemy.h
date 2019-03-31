@@ -13,4 +13,5 @@ public:
 	float speed;
 
 	Entity* target;
+	bool flybySounded;
 };
