@@ -114,8 +114,8 @@ void Player::update()
 		burner1->setVel(getVel()*0.9f);
 		burner1->setAng(ofRandomf()*180.0f);
 		burner1->setAngVel(ofRandomf()*40.0f);
-		burner1->setPos(toWorld(ofVec2f(-30.0f, 6.0f)));
-		burner1->setStartScale(0.4f);
+		burner1->setPos(toWorld(ofVec2f(-24.0f, 6.0f)));
+		burner1->setStartScale(0.6f);
 		burner1->setEndScale(0.0f);
 		burner1->setLifespan(55);
 		burner1->setStartAlpha(255.0f);
@@ -127,8 +127,8 @@ void Player::update()
 		burner2->setVel(getVel()*0.9f);
 		burner2->setAng(ofRandomf()*180.0f);
 		burner2->setAngVel(ofRandomf()*40.0f);
-		burner2->setPos(toWorld(ofVec2f(-30.0f, -6.0f)));
-		burner2->setStartScale(0.4f);
+		burner2->setPos(toWorld(ofVec2f(-24.0f, -6.0f)));
+		burner2->setStartScale(0.6f);
 		burner2->setEndScale(0.0f);
 		burner2->setLifespan(55);
 		burner2->setStartAlpha(255.0f);

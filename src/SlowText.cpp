@@ -23,5 +23,6 @@ void SlowText::update()
 
 void SlowText::draw()
 {
+	ofSetColor(ofColor::white, 255.0f);
 	ofDrawBitmapString(curText, pos.x, pos.y);
 }

@@ -18,4 +18,9 @@ public:
 
 	Sprite* title;
 	Sprite* clicktobegin;
+	Sprite* plane;
+
+	bool transitionStarted;
+	bool fadeStarted;
+	uint64_t fadeStartTime;
 };

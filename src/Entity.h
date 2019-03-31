@@ -45,6 +45,7 @@ public:
 	void applyForce(ofVec2f _force);
 	void setAngVel(float _angVel);
 	void setColor(ofColor _color);
+	ofVec2f forward(); //get forward vector
 
 	ofVec2f pos;
 	ofVec2f size;

@@ -134,6 +134,11 @@ void Entity::setColor(ofColor _color)
 	color = _color;
 }
 
+ofVec2f Entity::forward()
+{
+	return ofVec2f(1.0f, 0.0f).getRotated(ang);
+}
+
 
 
 EntitySystem::EntitySystem()

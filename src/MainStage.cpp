@@ -4,6 +4,7 @@ void MainStage::setup()
 {
 	player = new Player(rm->getImage("images\\f14_sheet.png"), input);
 	player->setAng(90.0f);
+	player->setPos(input->getMouseWorldPos());
 	ents->add(player, LAYER_FG_MID);
 
 	for (int i = 0; i < 64; ++i)
@@ -13,6 +14,16 @@ void MainStage::setup()
 		ow->setVel(ofVec2f(3.0f, -10.0f));
 		ents->add(ow, LAYER_BG_BOTTOM);
 	}
+
+	Particle* white = new Particle(ents->rm->getImage("images\\white.png"));
+	white->setPos(ofVec2f(0.0f, 0.0f));
+	white->setStartScale(20.0f);
+	white->setEndScale(20.0f);
+	white->setLifespan(2000);
+	white->setStartAlpha(600.0f);
+	white->setEndAlpha(0.0f);
+	white->setColor(ofColor::black);
+	ents->add(white, LAYER_FG_TOP);
 
 	SlowText* slowText = new SlowText("International Waters\nBering Sea\n1984\n1800 hours", 75);
 	slowText->setPos(ofVec2f(-100.0f, 0.0f));
