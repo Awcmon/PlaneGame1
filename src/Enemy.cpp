@@ -6,7 +6,7 @@ Enemy::Enemy()
 	//lifeSpan = 10000;
 	createTime = ofGetElapsedTimeMillis();
 	lifespan = 4000;
-	speed = 50.0f;
+	speed = 30.0f;
 	target = nullptr;
 }
 

@@ -28,7 +28,7 @@
 //TODO: More realistic waves in menu
 //TODO: Menu transition to main stage
 //TODO: Add music
-//TODO: Better shoot sound (probably use a loop)
+//RESOLVED: Better shoot sound (probably use a loop)
 //TODO: Implement explosions
 
 //Optimizations:

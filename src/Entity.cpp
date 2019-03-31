@@ -120,6 +120,11 @@ void Entity::setAngVel(float _angVel)
 	angVel = _angVel;
 }
 
+void Entity::setColor(ofColor _color)
+{
+	color = _color;
+}
+
 
 
 EntitySystem::EntitySystem()

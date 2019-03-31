@@ -43,7 +43,35 @@ void Bullet::update()
 		{
 			if (pos.squareDistance(curEnt->pos) < 1024.0f)
 			{
-				ents->rm->getSound("sounds\\shipexplode.wav")->play();
+				ents->rm->getSound("sounds\\explosion_generic_small_close_0"+ std::to_string((rand() % 3) + 1) + ".wav")->play();
+
+				for (int i = 0; i < 10; ++i)
+				{
+					Particle* smokePuff = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
+					smokePuff->applyForce(ofVec2f(ofRandomf() * 55.0f, -15.0f + ofRandomf() * 55.0f));
+					smokePuff->setAng(ofRandomf()*180.0f);
+					smokePuff->setPos(pos);
+					smokePuff->setStartScale(0.0f);
+					smokePuff->setEndScale(3.0f);
+					smokePuff->setLifespan(55);
+					smokePuff->setColor(ofColor(1.0f, 1.0f, 1.0f) * 130.0f);
+					smokePuff->setStartAlpha(255.0f);
+					smokePuff->setEndAlpha(0.0f);
+					ents->add(smokePuff, LAYER_FG_BOTTOM);
+				}
+				Particle* bang = new Particle(ents->rm->getImage("images\\bang32_1.png"));
+				bang->applyForce(ofVec2f(0.0f, -15.0f));
+				bang->setAng(ofRandomf()*180.0f);
+				bang->setPos(pos);
+				bang->setStartScale(0.0f);
+				bang->setEndScale(4.0f);
+				bang->setLifespan(55);
+				bang->setColor(ofColor(1.0f, 0.0f, 0.0f) * 200.0f);
+				bang->setStartAlpha(255.0f);
+				bang->setEndAlpha(0.0f);
+				ents->add(bang, LAYER_FG_BOTTOM);
+				
+
 				curEnt->remove();
 				remove();
 				return;
