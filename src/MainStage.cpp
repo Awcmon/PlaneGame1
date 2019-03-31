@@ -1,4 +1,5 @@
 #include "MainStage.h"
+#include "MenuState.h"
 
 void MainStage::setup()
 {
@@ -38,11 +39,23 @@ void MainStage::setup()
 	nextEnemySpawnTime = ofGetElapsedTimeMillis() + 8500;
 
 	ofHideCursor();
+	gameOver = false;
+	gameOverTime = 0;
 }
 
 void MainStage::update()
 {
-	if (ofGetElapsedTimeMillis() > nextEnemySpawnTime)
+	if (player->isDead() && gameOver == false)
+	{
+		SlowText* slowText = new SlowText("KIA above the Bering Sea\nScore :" + std::to_string(player->getScore())+"\nClick to return to menu.", 75);
+		slowText->setPos(ofVec2f(-100.0f, 0.0f));
+		slowText->lifespan = -1;
+		ents->add(slowText, LAYER_FG_TOP);
+		gameOverTime = ofGetElapsedTimeMillis();
+		gameOver = true;
+	}
+
+	if (ofGetElapsedTimeMillis() > nextEnemySpawnTime && !player->isDead())
 	{
 		int r = rand() % 4;
 
@@ -98,11 +111,6 @@ void MainStage::update()
 		}
 	}
 
-	if (input->keyPressed(' '))
-	{
-		std::cout << "Space pressed\n";
-	}
-
 	//update radar
 	warningPoints.clear();
 	for (size_t i = 0; i < ents->entities[LAYER_FG_MID].size(); ++i)
@@ -148,6 +156,13 @@ void MainStage::update()
 			
 		}
 	}
+
+	if (gameOver && input->mousePressed(0) && ofGetElapsedTimeMillis() > gameOverTime + 500)
+	{
+		ents->rm->stopSoundLoop("soundloops\\afterburner_ii.mp3");
+		ents->clear();
+		changeState(new MenuState());
+	}
 }
 
 void MainStage::draw()
@@ -157,6 +172,9 @@ void MainStage::draw()
 	ofDrawBitmapString("Entities: " + std::to_string(ents->size()), ofGetWindowWidth() / 2 - 170, ofGetWindowHeight() / 2 - 35);
 
 	ofDrawBitmapString("Score: " + std::to_string(player->score), -ofGetWindowWidth() / 2, ofGetWindowHeight() / 2 - 15);
+
+	if (player->isDead()) { return; }
+
 	ofNoFill();
 	ofSetColor(ofColor::white, 100);
 	ofDrawRectangle(input->getMouseWorldPos().x, input->getMouseWorldPos().y - 32, 64, 64);

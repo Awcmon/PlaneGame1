@@ -31,6 +31,9 @@ public:
 
 	uint64_t nextEnemySpawnTime;
 
+	bool gameOver;
+	uint64_t gameOverTime;
+
 	std::vector<WarningData> warningPoints;
 	std::array<LineSegment, 4> warningSegments;
 };

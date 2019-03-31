@@ -19,6 +19,9 @@ Player::Player(ofImage* _image, Input* _input)
 
 	heat = 0.0f;
 	overheated = false;
+	dead = false;
+
+	setID("player");
 }
 
 void Player::handleInput()
@@ -28,6 +31,18 @@ void Player::handleInput()
 
 void Player::update()
 {
+	if (dead) 
+	{ 
+		setAlpha(0); 
+		setPos(ofVec2f(100000.0f, 100000.0f));
+		ents->rm->stopSoundLoop("soundloops\\shootloop_100sp.wav");
+		ents->rm->stopSoundLoop("soundloops\\caution2.wav");
+		ents->rm->stopSoundLoop("soundloops\\damagealarm.wav");
+		ents->rm->stopSoundLoop("soundloops\\afterburner.wav");
+		ents->rm->stopSoundLoop("soundloops\\air_distant.wav");
+		return; 
+	}
+
 	handleInput();
 
 	ents->rm->playSoundLoop("soundloops\\air_distant.wav");
@@ -207,4 +222,29 @@ void Player::update()
 		ents->rm->stopSoundLoop("soundloops\\afterburner.wav");
 	}
 
+}
+
+bool Player::isDead()
+{
+	return dead;
+}
+
+float Player::getHeat()
+{
+	return heat;
+}
+
+uint64_t Player::getScore()
+{
+	return score;
+}
+
+void Player::setScore(uint64_t _score)
+{
+	score = _score;
+}
+
+void Player::setDead(bool _dead)
+{
+	dead = _dead;
 }
