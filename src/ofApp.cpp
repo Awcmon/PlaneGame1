@@ -30,7 +30,7 @@
 //TODO: Add music
 //RESOLVED: Better shoot sound (probably use a loop)
 //RESOLVED: Implement explosions
-//TODO: Early warning HUD
+//RESOLVED: Early warning HUD
 //TODO: Lingering smoke, debris to explosions
 //TODO: Explosion screenshake
 //TODO: Make explosions dependent on enemy velocity?

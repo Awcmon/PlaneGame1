@@ -5,6 +5,13 @@
 #include "unordered_set"
 #include "util.h"
 
+struct WarningData
+{
+	ofVec2f pos;
+	ofColor color;
+	int alpha;
+};
+
 class MainStage : public GameState
 {
 public:
@@ -16,5 +23,5 @@ public:
 
 	uint64_t nextEnemySpawnTime;
 
-	std::vector<ofVec2f> warningPoints;
+	std::vector<WarningData> warningPoints;
 };

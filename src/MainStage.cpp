@@ -25,12 +25,12 @@ void MainStage::update()
 	{
 		Enemy* enemy = new Enemy();
 		enemy->setImage(rm->getImage("images\\enemy.png"));
-		enemy->setPos(ofVec2f(ofRandomf() * 800.0f, 2000.0f));
+		enemy->setPos(ofVec2f(ofRandomf() * 800.0f, 4000.0f));
 		enemy->setAng(-90.0f);
 		enemy->setTarget(player);
 		ents->add(enemy, LAYER_FG_MID);
 
-		nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(500.0f);
+		nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(1000.0f);
 	}
 
 	if (input->keyPressed(' '))
@@ -55,7 +55,18 @@ void MainStage::update()
 
 			if (cross2d(r, s) != 0 && t >= 0.0f && t <= 1.0f && u >= 0.0f && u <= 1.0f)
 			{
-				warningPoints.push_back(p + t * r);
+				ofVec2f pt = p + t * r;
+				ofColor color;
+				float dist = (pt - q).length();
+				if (dist < 250.0f)
+				{
+					color = ofColor::red;
+				}
+				else
+				{
+					color = ofColor::yellow;
+				}
+				warningPoints.push_back({ pt, color, (int)((500000.0f)/(dist + 0.1f)) });
 			}
 		}
 	}
@@ -76,8 +87,8 @@ void MainStage::draw()
 
 	for (size_t i = 0; i < warningPoints.size(); ++i)
 	{
-		ofSetColor(ofColor::yellow, 200);
+		ofSetColor(warningPoints[i].color, warningPoints[i].alpha);
 		//ofDrawBitmapString("WARNING", warningPoints[i].x, warningPoints[i].y);
-		rm->getImage("images\\warning.png")->draw(warningPoints[i]);
+		rm->getImage("images\\warning.png")->draw(warningPoints[i].pos);
 	}
 }
