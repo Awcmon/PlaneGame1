@@ -13,11 +13,20 @@ Entity::Entity(std::string _id, ofVec2f _pos, float _scale, float _ang, ofVec2f 
 	mass = 1.0f;
 	accel = ofVec2f(0.0f, 0.0f);
 	angVel = 0.0f;
+
+	lifespan = -1;
+	createTime = ofGetElapsedTimeMillis();
 }
 
 //ToDo: Make this framerate independent maybe?
 void Entity::update()
 {
+
+	if (lifespan != -1 && ofGetElapsedTimeMillis() > createTime + lifespan)
+	{
+		remove();
+	}
+
 	//float dt = 1.0 / ofGetFrameRate();
 	float dt = 1.0f;
 

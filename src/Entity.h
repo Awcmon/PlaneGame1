@@ -56,6 +56,9 @@ public:
 	float mass;
 	ofVec2f accel;
 	float angVel;
+
+	int lifespan; //in millis
+	uint64_t createTime;
 	
 	Entity* owner;
 

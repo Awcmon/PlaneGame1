@@ -23,10 +23,6 @@ void Sprite::init()
 void Sprite::update()
 {
 	Entity::update();
-	if (lifespan != -1 && ofGetElapsedTimeMillis() > createTime + lifespan)
-	{
-		remove();
-	}
 
 	//animation stuff
 	AnimData curAnimData = anims[curAnim];

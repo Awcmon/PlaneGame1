@@ -37,7 +37,4 @@ public:
 	std::unordered_map<std::string, AnimData> anims;
 	int seqInd;
 	uint64_t lastAnimTime;
-
-	int lifespan; //in millis
-	uint64_t createTime;
 };
