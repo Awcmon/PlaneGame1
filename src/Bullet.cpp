@@ -45,7 +45,7 @@ void Bullet::update()
 			{
 				((Player*)owner)->score += 100;
 
-				if (pos.lengthSquared() < 500.0f * 500.0f)
+				if (pos.lengthSquared() < 600.0f * 600.0f)
 				{
 					ents->rm->getSound("sounds\\explosion_generic_small_close_0" + std::to_string((rand() % 3) + 1) + ".wav")->play();
 				}

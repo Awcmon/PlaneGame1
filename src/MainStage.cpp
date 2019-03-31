@@ -30,7 +30,7 @@ void MainStage::update()
 		enemy->setTarget(player);
 		ents->add(enemy, LAYER_FG_MID);
 
-		nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(1000.0f);
+		nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(750.0f);
 	}
 
 	if (input->keyPressed(' '))
@@ -58,7 +58,7 @@ void MainStage::update()
 				ofVec2f pt = p + t * r;
 				ofColor color;
 				float dist = (pt - q).length();
-				if (dist < 250.0f)
+				if (dist < 500.0f)
 				{
 					color = ofColor::red;
 				}
