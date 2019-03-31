@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #include "Particle.h"
 #include "Player.h"
+#include "Debris.h"
 
 class Bullet : public Sprite
 {

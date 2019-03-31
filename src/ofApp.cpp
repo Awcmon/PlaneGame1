@@ -72,6 +72,12 @@ void ofApp::setup(){
 void ofApp::update(){
 	//cam.setPosition(ofVec3f(ofRandomf(), ofRandomf(), 1000));
 	if (curGameState == nullptr) { return; }
+	/*
+	if (input.keyPressed('f'))
+	{
+		ofToggleFullscreen();
+	}
+	*/
 	view.update();
 	ents.update();
 	curGameState->update();

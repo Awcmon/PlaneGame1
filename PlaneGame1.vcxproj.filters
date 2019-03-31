@@ -79,6 +79,9 @@
     <ClCompile Include="src\SlowText.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Debris.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -174,6 +177,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\SlowText.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Debris.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -79,6 +79,21 @@ void Bullet::update()
 				bang->setStartAlpha(255.0f);
 				bang->setEndAlpha(0.0f);
 				ents->add(bang, LAYER_FG_BOTTOM);
+
+				for (int i = 0; i < rand() % 4 + 2; ++i)
+				{
+					Debris* debris = new Debris();
+					debris->setImage(ents->rm->getImage("images\\debris1.png"));
+					debris->setPos(curEnt->getPos());
+					debris->setVel(curEnt->getVel() + ofVec2f(ofRandomf(), ofRandomf())*30.0f);
+					debris->setAng(ofRandomf()*180.0f);
+					debris->setAngVel(ofRandomf()*20.0f);
+					debris->setLifespan(500);
+					debris->setAlpha(150.0f);
+					debris->setScale(ofRandomf()*2.0f + 0.5f);
+
+					ents->add(debris, LAYER_FG_BOTTOM);
+				}
 				
 
 				curEnt->remove();
