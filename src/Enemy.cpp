@@ -19,9 +19,9 @@ void Enemy::update()
 	//ang = approachAngle(ang, targAng, angleDifference(targAng, ang)*0.02f);
 	ang = approachAngle(ang, targAng, 0.1f);
 	vel = ofVec2f(speed, 0.0f).getRotated(ang);
-	if (pos.lengthSquared() < 400.0f * 400.0f && !flybySounded)
+	if ((target->getPos() - pos).lengthSquared() < 600.0f * 600.0f && !flybySounded)
 	{
-		ents->rm->getSound("sounds\\missile_launch1.wav")->play();
+		ents->rm->getSound("sounds\\missile_launch3.wav")->play();
 		flybySounded = true;
 	}
 }

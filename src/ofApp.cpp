@@ -24,18 +24,19 @@
 //RESOLVED: Main menu
 //RESOLVED: Implement roll sprites for player
 //TODO: Implement enemies and stuff
-//TODO: Implement a proper hud
+//RESOLVED: Implement a proper hud
 //TODO: More realistic waves in menu
 //TODO: Menu transition to main stage
 //TODO: Add music
 //RESOLVED: Better shoot sound (probably use a loop)
 //RESOLVED: Implement explosions
 //RESOLVED: Early warning HUD
-//TODO: Lingering smoke, debris to explosions
+//TODO: Add lingering smoke, debris, to explosions
 //TODO: Explosion screenshake
 //TODO: Make explosions dependent on enemy velocity?
 //TODO: Homing missile enemy
-//TODO: Add enemy flyby sound
+//RESOLVED: Add enemy flyby sound
+//TODO: Implement player gun overheating
 
 //Optimizations:
 //TODO: Implement listener systems for more things rather than the mess currently

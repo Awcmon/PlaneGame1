@@ -19,6 +19,11 @@ void MainStage::setup()
 	slowText->lifespan = 7000;
 	ents->add(slowText, LAYER_FG_TOP);
 
+	warningSegments[0] = { ofVec2f(-1280.0f / 2.0f + 32.0f, 960.0f / 2.0f - 32.0f), ofVec2f(1280.0f - 64.0f, 0.0f) }; //top
+	warningSegments[1] = { ofVec2f(-1280.0f / 2.0f + 32.0f, -960.0f / 2.0f + 32.0f), ofVec2f(1280.0f - 64.0f, 0.0f) }; //bottom
+	warningSegments[2] = { ofVec2f(-1280.0f / 2.0f + 32.0f, 960.0f / 2.0f - 32.0f), ofVec2f(0.0f, 960.0f - 64.0f) }; //left
+	warningSegments[3] = { ofVec2f(1280.0f / 2.0f - 32.0f, 960.0f / 2.0f - 32.0f), ofVec2f(0.0f, 960.0f - 64.0f) }; //right
+
 	nextEnemySpawnTime = ofGetElapsedTimeMillis() + 7000;
 
 	ofHideCursor();
@@ -52,27 +57,38 @@ void MainStage::update()
 		{
 			ofVec2f q = curEnt->getPos();
 			ofVec2f s = player->getPos() - curEnt->getPos();
-			ofVec2f p = ofVec2f(-1280.0f / 2.0f + 32.0f, 960.0f/2.0f - 32.0f);
+
+			/*
+			ofVec2f p = ofVec2f(-1280.0f / 2.0f + 32.0f, 960.0f / 2.0f - 32.0f);
 			ofVec2f r = ofVec2f(1280.0f / 2.0f - 32.0f, 960.0f / 2.0f - 32.0f) - p;
+			*/
 
-			float t = cross2d((q - p), s) / cross2d(r, s);
-			float u = cross2d((q - p), r) / cross2d(r, s);
-
-			if (cross2d(r, s) != 0 && t >= 0.0f && t <= 1.0f && u >= 0.0f && u <= 1.0f)
+			for (size_t i = 0; i < warningSegments.size(); ++i)
 			{
-				ofVec2f pt = p + t * r;
-				ofColor color;
-				float dist = (pt - q).length();
-				if (dist < 500.0f)
+				ofVec2f p = warningSegments[i].p1;
+				ofVec2f r = warningSegments[i].p2;
+
+				float t = cross2d((q - p), s) / cross2d(r, s);
+				float u = cross2d((q - p), r) / cross2d(r, s);
+
+				if (cross2d(r, s) != 0 && t >= 0.0f && t <= 1.0f && u >= 0.0f && u <= 1.0f)
 				{
-					color = ofColor::red;
+					ofVec2f pt = p + t * r;
+					ofColor color;
+					float dist = (pt - q).length();
+					if (dist < 500.0f)
+					{
+						color = ofColor::red;
+					}
+					else
+					{
+						color = ofColor::yellow;
+					}
+					warningPoints.push_back({ pt, color, (int)((500000.0f) / (dist + 0.1f)) });
 				}
-				else
-				{
-					color = ofColor::yellow;
-				}
-				warningPoints.push_back({ pt, color, (int)((500000.0f)/(dist + 0.1f)) });
 			}
+
+			
 		}
 	}
 }
