@@ -54,6 +54,11 @@ void Bullet::update()
 					ents->rm->getSound("sounds\\explosion_generic_small_distant_0" + std::to_string((rand() % 3) + 1) + ".wav")->play();
 				}
 
+				ofVec2f diff = owner->getPos() - curEnt->getPos();
+				//ents->view->posViewPunch(((diff.normalized() * 30000.0f) / (diff.length() + 0.1f)) + ofVec2f(ofRandomf(), ofRandomf()) * 0.65f);
+
+				ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * (20000.0f) / (diff.length() + 0.1f));
+
 				Particle* lingeringPuff = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
 				lingeringPuff->applyForce(ofVec2f(ofRandomf() * 5.0f, -15.0f + ofRandomf() * 5.0f));
 				lingeringPuff->setAng(ofRandomf()*180.0f);
