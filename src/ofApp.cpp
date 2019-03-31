@@ -34,6 +34,8 @@
 //TODO: Lingering smoke, debris to explosions
 //TODO: Explosion screenshake
 //TODO: Make explosions dependent on enemy velocity?
+//TODO: Homing missile enemy
+//TODO: Add enemy flyby sound
 
 //Optimizations:
 //TODO: Implement listener systems for more things rather than the mess currently
