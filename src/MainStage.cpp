@@ -14,7 +14,12 @@ void MainStage::setup()
 		ents->add(ow, LAYER_BG_BOTTOM);
 	}
 
-	nextEnemySpawnTime = ofGetElapsedTimeMillis() + 2000;
+	SlowText* slowText = new SlowText("International Waters, Bering Sea\n1800 hours", 75);
+	slowText->setPos(ofVec2f(-100.0f, 0.0f));
+	slowText->lifespan = 5000;
+	ents->add(slowText, LAYER_FG_TOP);
+
+	nextEnemySpawnTime = ofGetElapsedTimeMillis() + 5000;
 
 	ofHideCursor();
 }

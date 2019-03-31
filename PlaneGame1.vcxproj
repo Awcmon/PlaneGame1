@@ -204,6 +204,7 @@
     <ClCompile Include="src\Particle.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
+    <ClCompile Include="src\SlowText.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +232,7 @@
     <ClInclude Include="src\Particle.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\ResourceManager.h" />
+    <ClInclude Include="src\SlowText.h" />
     <ClInclude Include="src\Sprite.h" />
     <ClInclude Include="src\util.h" />
   </ItemGroup>

@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "unordered_set"
 #include "util.h"
+#include "SlowText.h"
 
 struct WarningData
 {

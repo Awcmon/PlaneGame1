@@ -76,6 +76,9 @@
     <ClCompile Include="src\MenuState.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\SlowText.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -168,6 +171,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\MenuState.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SlowText.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
