@@ -54,6 +54,18 @@ void Bullet::update()
 					ents->rm->getSound("sounds\\explosion_generic_small_distant_0" + std::to_string((rand() % 3) + 1) + ".wav")->play();
 				}
 
+				Particle* lingeringPuff = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
+				lingeringPuff->applyForce(ofVec2f(ofRandomf() * 5.0f, -15.0f + ofRandomf() * 5.0f));
+				lingeringPuff->setAng(ofRandomf()*180.0f);
+				lingeringPuff->setPos(pos);
+				lingeringPuff->setStartScale(2.0f);
+				lingeringPuff->setEndScale(5.0f);
+				lingeringPuff->setLifespan(500);
+				lingeringPuff->setColor(ofColor(1.0f, 1.0f, 1.0f) * 130.0f);
+				lingeringPuff->setStartAlpha(155.0f);
+				lingeringPuff->setEndAlpha(0.0f);
+				ents->add(lingeringPuff, LAYER_FG_BOTTOM);
+
 				for (int i = 0; i < 10; ++i)
 				{
 					Particle* smokePuff = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
@@ -65,7 +77,7 @@ void Bullet::update()
 					smokePuff->setLifespan(55);
 					smokePuff->setColor(ofColor(1.0f, 1.0f, 1.0f) * 130.0f);
 					smokePuff->setStartAlpha(255.0f);
-					smokePuff->setEndAlpha(0.0f);
+					smokePuff->setEndAlpha(100.0f);
 					ents->add(smokePuff, LAYER_FG_BOTTOM);
 				}
 				Particle* bang = new Particle(ents->rm->getImage("images\\bang32_1.png"));
@@ -77,7 +89,7 @@ void Bullet::update()
 				bang->setLifespan(55);
 				bang->setColor(ofColor(1.0f, 0.0f, 0.0f) * 200.0f);
 				bang->setStartAlpha(255.0f);
-				bang->setEndAlpha(0.0f);
+				bang->setEndAlpha(100.0f);
 				ents->add(bang, LAYER_FG_BOTTOM);
 
 				for (int i = 0; i < rand() % 4 + 2; ++i)

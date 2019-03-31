@@ -31,9 +31,9 @@
 //RESOLVED: Better shoot sound (probably use a loop)
 //RESOLVED: Implement explosions
 //RESOLVED: Early warning HUD
-//TODO: Add lingering smoke, debris, to explosions
+//RESOLVED: Add lingering smoke, debris, to explosions
 //TODO: Explosion screenshake
-//TODO: Make explosions dependent on enemy velocity?
+//RESOLVED: Make explosions dependent on enemy velocity?
 //TODO: Homing missile enemy
 //RESOLVED: Add enemy flyby sound
 //TODO: Implement player gun overheating
