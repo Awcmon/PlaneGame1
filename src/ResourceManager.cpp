@@ -34,6 +34,7 @@ ResourceManager::ResourceManager()
 	ofDirectory soundloopsDir("soundloops");
 	//only show png files
 	soundloopsDir.allowExt("wav");
+	soundloopsDir.allowExt("mp3");
 	//populate the directory object
 	soundloopsDir.listDir();
 

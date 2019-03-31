@@ -37,6 +37,8 @@ void MenuState::setup()
 	transitionStarted = false;
 	fadeStarted = false;
 	fadeStartTime = 0;
+
+	rm->playSoundLoop("soundloops\\waves.wav");
 }
 
 void MenuState::update()
@@ -72,6 +74,8 @@ void MenuState::update()
 	{
 		titleTargY = 800.0f;
 		clickTargX = 2000.0f;
+
+		rm->playSoundLoop("soundloops\\afterburner_ii.mp3");
 
 		plane->applyForce(plane->forward() * 0.2f);
 		ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * 5.0f);
@@ -147,7 +151,8 @@ void MenuState::update()
 		if (ofGetElapsedTimeMillis() > fadeStartTime + 2000)
 		{
 			ofSetBackgroundColor(ofColor::black);
-			ents->rm->stopSoundLoop("soundloops\\afterburner.wav");
+			rm->stopSoundLoop("soundloops\\waves.wav");
+			rm->stopSoundLoop("soundloops\\afterburner.wav");
 			ents->clear();
 			changeState(new MainStage());
 		}
