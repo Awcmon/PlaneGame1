@@ -46,6 +46,16 @@ bool Input::mouseDown(int button)
 	return mouseButtonsDown[button];
 }
 
+bool Input::mousePressed(int button)
+{
+	return mouseButtonsDown[button] && !oldMouseButtonsDown[button];
+}
+
+bool Input::mouseReleased(int button)
+{
+	return !mouseButtonsDown[button] && oldMouseButtonsDown[button];
+}
+
 void Input::setMousePos(ofVec2f _mPos)
 {
 	mPos = _mPos;
@@ -65,4 +75,5 @@ void Input::setMouseDown(int button, bool down)
 void Input::update()
 {
 	oldKeysDown = keysDown;
+	oldMouseButtonsDown = mouseButtonsDown;
 }

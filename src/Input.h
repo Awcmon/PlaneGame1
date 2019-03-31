@@ -10,6 +10,7 @@ class Input
 	std::array<bool, 100000> keysDown;
 	std::array<bool, 100000> oldKeysDown;
 	std::array<bool, 3> mouseButtonsDown;
+	std::array<bool, 3> oldMouseButtonsDown;
 	View* view;
 public:
 	Input();
@@ -22,6 +23,8 @@ public:
 	bool keyPressed(int key);
 	bool keyReleased(int key);
 	bool mouseDown(int button);
+	bool mousePressed(int button);
+	bool mouseReleased(int button);
 
 	void setMousePos(ofVec2f _mPos);
 	void setKeyDown(int key, bool down);

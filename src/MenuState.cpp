@@ -56,7 +56,7 @@ void MenuState::update()
 		clickTargX = 0.0f;
 	}
 
-	if (input->keyPressed(' '))
+	if (input->mousePressed(0) || input->keyPressed(' '))
 	{
 		ents->clear();
 		//ents->update();
