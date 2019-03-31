@@ -83,14 +83,21 @@ void Player::update()
 		shootPuff->setLifespan(100);
 		shootPuff->setStartAlpha(255.0f);
 		shootPuff->setEndAlpha(0.0f);
+		shootPuff->setAngVel(30.0f);
 		ents->add(shootPuff, LAYER_FG_BOTTOM);
 
 		ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * 5.0f);
 
 		ents->add(bullet, LAYER_FG_BOTTOM);
 
-		ents->rm->getSound("sounds\\rac_fire1.wav")->play();
+		//ents->rm->getSound("sounds\\rac_fire1.wav")->play();
+		ents->rm->playSoundLoop("soundloops\\shootloop_100sp.wav");
 		lastShootTime = ofGetElapsedTimeMillis();
+	}
+	
+	if (!input->mouseDown(0))
+	{
+		ents->rm->stopSoundLoop("soundloops\\shootloop_100sp.wav");
 	}
 
 	if (targetPos.y > pos.y + 42.0f)
