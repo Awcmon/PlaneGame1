@@ -27,7 +27,7 @@ void MainStage::setup()
 
 	SlowText* slowText = new SlowText("International Waters\nBering Sea\n1984\n1800 hours", 75);
 	slowText->setPos(ofVec2f(-100.0f, 0.0f));
-	slowText->lifespan = 7000;
+	slowText->lifespan = 8500;
 	ents->add(slowText, LAYER_FG_TOP);
 
 	warningSegments[0] = { ofVec2f(-1280.0f / 2.0f + 32.0f, 960.0f / 2.0f - 32.0f), ofVec2f(1280.0f - 64.0f, 0.0f) }; //top
@@ -35,7 +35,7 @@ void MainStage::setup()
 	warningSegments[2] = { ofVec2f(-1280.0f / 2.0f + 32.0f, 960.0f / 2.0f - 32.0f), ofVec2f(0.0f, 960.0f - 64.0f) }; //left
 	warningSegments[3] = { ofVec2f(1280.0f / 2.0f - 32.0f, 960.0f / 2.0f - 32.0f), ofVec2f(0.0f, 960.0f - 64.0f) }; //right
 
-	nextEnemySpawnTime = ofGetElapsedTimeMillis() + 7000;
+	nextEnemySpawnTime = ofGetElapsedTimeMillis() + 8500;
 
 	ofHideCursor();
 }

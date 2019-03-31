@@ -135,7 +135,7 @@ void MenuState::update()
 			white->setPos(ofVec2f(0.0f, 0.0f));
 			white->setStartScale(20.0f);
 			white->setEndScale(20.0f);
-			white->setLifespan(2200);
+			white->setLifespan(1200);
 			white->setStartAlpha(0.0f);
 			white->setEndAlpha(500.0f);
 			white->setColor(ofColor::black);
@@ -148,7 +148,7 @@ void MenuState::update()
 
 	if (fadeStarted)
 	{
-		if (ofGetElapsedTimeMillis() > fadeStartTime + 2000)
+		if (ofGetElapsedTimeMillis() > fadeStartTime + 1000)
 		{
 			ofSetBackgroundColor(ofColor::black);
 			rm->stopSoundLoop("soundloops\\waves.wav");

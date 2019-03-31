@@ -23,11 +23,11 @@
 //RESOLVED (sort of): Scrolling background
 //RESOLVED: Main menu
 //RESOLVED: Implement roll sprites for player
-//TODO: Implement enemies and stuff
+//RESOLVED: Implement enemies and stuff
 //RESOLVED: Implement a proper hud
 //TODO: More realistic waves in menu
-//TODO: Menu transition to main stage
-//TODO: Add music
+//RESOLVED: Menu transition to main stage
+//RESOLVED: Add music
 //RESOLVED: Better shoot sound (probably use a loop)
 //RESOLVED: Implement explosions
 //RESOLVED: Early warning HUD
