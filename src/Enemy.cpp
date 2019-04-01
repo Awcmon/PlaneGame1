@@ -19,16 +19,21 @@ void Enemy::update()
 {
 	Sprite::update();
 	if (target == nullptr) { return; }
+
+	//sort of try to home onto the target
 	targAng = ofVec2f(1.0f, 0.0f).angle((target->getPos() - pos));
 	//ang = approachAngle(ang, targAng, angleDifference(targAng, ang)*0.02f);
 	ang = approachAngle(ang, targAng, 0.1f);
-	vel = ofVec2f(speed, 0.0f).getRotated(ang) + ofVec2f(0.0f, -20.0f);
+	vel = ofVec2f(speed, 0.0f).getRotated(ang) + ofVec2f(0.0f, -20.0f); //simulated relative velocity
+
+	//play a sound if the enemy gets close to the target
 	if ((target->getPos() - pos).lengthSquared() < 600.0f * 600.0f && !flybySounded)
 	{
 		ents->rm->getSound("sounds\\missile_launch3.wav")->play();
 		flybySounded = true;
 	}
 
+	//engine smoke
 	for (int i = 0; i < 2; ++i)
 	{
 		Particle* enginePuff1 = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
@@ -43,13 +48,16 @@ void Enemy::update()
 		ents->add(enginePuff1, LAYER_FG_BOTTOM);
 	}
 	
+	//collide with the player
 	if (target->getID() == "player")
 	{
 		Player* curEnt = (Player*)target;
 		if (pos.squareDistance(curEnt->pos) < 1024.0f)
 		{
+			//kill the player
 			curEnt->setDead(true);
 
+			//explosion effects
 			if (pos.lengthSquared() < 600.0f * 600.0f)
 			{
 				ents->rm->getSound("sounds\\explosion_generic_small_close_0" + std::to_string((rand() % 3) + 1) + ".wav")->play();
