@@ -61,7 +61,7 @@ void MainStage::update()
 	}
 
 	//handle phase change
-	if (phase < 2 && ofGetElapsedTimeMillis() > nextPhaseTime)
+	if (phase < 2 && ofGetElapsedTimeMillis() > nextPhaseTime && !gameOver)
 	{
 		if(phase == 0)
 		{
