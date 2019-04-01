@@ -41,17 +41,18 @@ void MainStage::setup()
 	ofHideCursor();
 	gameOver = false;
 	gameOverTime = 0;
+	gameStartTime = ofGetElapsedTimeMillis();
 }
 
 void MainStage::update()
 {
 	if (player->isDead() && gameOver == false)
 	{
-		SlowText* slowText = new SlowText("KIA above the Bering Sea\nScore :" + std::to_string(player->getScore())+"\nClick to return to menu.", 75);
+		gameOverTime = ofGetElapsedTimeMillis();
+		SlowText* slowText = new SlowText("KIA above the Bering Sea\nScore :" + std::to_string(player->getScore())+"\nSurvived for " + std::to_string((gameOverTime - gameStartTime)/1000) + " seconds.\nClick to return to menu.", 75);
 		slowText->setPos(ofVec2f(-100.0f, 0.0f));
 		slowText->lifespan = -1;
 		ents->add(slowText, LAYER_FG_TOP);
-		gameOverTime = ofGetElapsedTimeMillis();
 		gameOver = true;
 	}
 

@@ -31,6 +31,8 @@ public:
 
 	uint64_t nextEnemySpawnTime;
 
+	uint64_t gameStartTime;
+
 	bool gameOver;
 	uint64_t gameOverTime;
 
