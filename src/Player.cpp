@@ -168,7 +168,7 @@ void Player::update()
 	{
 		ents->rm->playSoundLoop("soundloops\\afterburner.wav");
 
-		ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * 3.0f);
+		ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * 5.0f);
 
 		Particle* burner1 = new Particle(ents->rm->getImage("images\\bang32_1.png"));
 		burner1->setVel(getVel()*0.9f);
