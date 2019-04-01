@@ -160,7 +160,7 @@ void MainStage::update()
 
 	if (gameOver && input->mousePressed(0) && ofGetElapsedTimeMillis() > gameOverTime + 500)
 	{
-		ents->rm->stopSoundLoop("soundloops\\afterburner_ii.mp3");
+		ents->rm->stopSoundLoop("soundloops\\afterburner_ii.ogg");
 		ents->clear();
 		changeState(new MenuState());
 	}
