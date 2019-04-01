@@ -52,10 +52,7 @@ void MainStage::setup()
 	gameOverTime = 0;
 	gameStartTime = ofGetElapsedTimeMillis();
 
-	phase = 0;
-	unitPhase = 1;
-	nextPhaseTime = ofGetElapsedTimeMillis() + 20000;
-	spawnPeriod = 1500;
+	spawnPeriod = 750;
 }
 
 void MainStage::update()
@@ -71,36 +68,10 @@ void MainStage::update()
 		gameOver = true;
 	}
 
-	//handle phase change
-	if (phase < 2 && ofGetElapsedTimeMillis() > nextPhaseTime && !gameOver)
-	{
-		if(phase == 0)
-		{
-			unitPhase = 2;
-			SlowText* slowText = new SlowText("DEFCON 2", 75);
-			slowText->setPos(ofVec2f(-100.0f, 30.0f));
-			slowText->lifespan = 3000;
-			ents->add(slowText, LAYER_FG_TOP);
-			phase = 1;
-			spawnPeriod = 1000;
-			nextPhaseTime = ofGetElapsedTimeMillis() + 15000;
-		}
-		else if (phase == 1)
-		{
-			unitPhase = 4;
-			SlowText* slowText = new SlowText("DEFCON 1", 75);
-			slowText->setPos(ofVec2f(-100.0f, 30.0f));
-			slowText->lifespan = 3000;
-			ents->add(slowText, LAYER_FG_TOP);
-			spawnPeriod = 750;
-			phase = 2;
-		}
-	}
-
 	//spawn enemies
 	if (ofGetElapsedTimeMillis() > nextEnemySpawnTime && !player->isDead())
 	{
-		int r = rand() % unitPhase;
+		int r = rand() % 4;
 
 		if (r == 1) //top
 		{

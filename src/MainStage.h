@@ -42,9 +42,5 @@ public:
 	std::vector<WarningData> warningPoints;
 	std::array<LineSegment, 4> warningSegments;
 
-	int phase;
-	int unitPhase;
-	uint64_t nextPhaseTime;
-
 	int spawnPeriod;
 };
