@@ -5,17 +5,20 @@
 
 void MenuState::setup()
 {
-
+	//carrier sprite
 	Sprite* carrier = new Sprite(rm->getImage("images\\carrier.png"));
 	carrier->setPos(ofVec2f(0.0f, -10.0f));
 	ents->add(carrier, LAYER_BG_TOP);
 
+	//click to begin sprite
 	clicktobegin = new Sprite(rm->getImage("images\\clicktobegin.png"));
 	ents->add(clicktobegin, LAYER_FG_TOP);
 
+	//title sprite
 	title = new Sprite(rm->getImage("images\\title.png"));
 	ents->add(title, LAYER_FG_TOP);
 
+	//the plane on the carrier
 	ofDisableAntiAliasing();
 	plane = new Sprite(rm->getImage("images\\f14.png"));
 	ents->add(plane, LAYER_FG_MID);
@@ -23,6 +26,7 @@ void MenuState::setup()
 	plane->setAng(93.0f);
 	plane->setPos(ofVec2f(127.0f, -210.0f));
 
+	//ocean waves
 	for (int i = 0; i < 64; ++i)
 	{
 		OceanWaves* ow = new OceanWaves();
@@ -46,6 +50,7 @@ void MenuState::setup()
 
 void MenuState::update()
 {
+	//move text smoothly
 	title->setPos(ofVec2f(ofRandomf()*0.65f, titleY + ofRandomf()*0.65f));
 	titleY = approach(titleY, titleTargY, (titleTargY - titleY) * 0.025f);
 
@@ -55,8 +60,10 @@ void MenuState::update()
 	}
 	clicktobegin->setPos(ofVec2f(clickX, -350.0f));
 
+	//make the click to begin text blink
 	clicktobegin->setAlpha(200.0f * (sinf(5.0f*ofGetElapsedTimef()) + 1.0f)*0.5f + 55.0f);
 
+	//reset the menu movement for filming purposes
 	if (input->keyPressed('r'))
 	{
 		titleY = -500.0f;
@@ -66,6 +73,7 @@ void MenuState::update()
 		clickTargX = 0.0f;
 	}
 
+	//start transition to main stage
 	if ((input->mousePressed(0) || input->keyPressed(' ')) && !transitionStarted)
 	{
 		//ents->update();

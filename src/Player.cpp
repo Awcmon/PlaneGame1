@@ -1,5 +1,8 @@
 #include "Player.h"
 
+//Alan Duong, 03/31/19
+//The player.
+
 //ToDo: Make weapons their own entities that are attached to the plane?
 Player::Player(ofImage* _image, Input* _input)
 {
@@ -32,6 +35,7 @@ void Player::handleInput()
 
 void Player::update()
 {
+	//make the player basically disappear if they're dead.
 	if (dead) 
 	{ 
 		setAlpha(0); 
@@ -51,13 +55,14 @@ void Player::update()
 	//ambient turbulence
 	ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * 0.65f);
 
+	//attempt to move the plane to the cursor
 	ofVec2f diff = targetPos - pos - ofVec2f(0, 32.0f);
 	pos += diff * 0.2f;
 
 	//calculate angle from plane to mouse pos
 	float targAng = ofVec2f(1.0f, 0.0f).angle((targetPos - pos));
 
-	//reflect angle if it is negative (when the plane is backing up/"slowing down")
+	//reflect angle if it is negative (when the plane is backing up/"slowing down", aka moving to the bottom of the screen.)
 	if (targAng < 0.0f)
 	{
 		targAng *= -1.0f;
@@ -76,6 +81,8 @@ void Player::update()
 	ang = approachAngle(ang, targAng, angleDifference(targAng, ang)*0.3f);
 	ang = normalizeAngle(ang);
 
+	//set diff anims/sprites/frames
+	//basically, make the plane look like it is rolling when it is turning.
 	if (ang < 70.0f)
 	{
 		setAnim("right");
@@ -89,16 +96,20 @@ void Player::update()
 		setAnim("idle");
 	}
 
+	//dissipate the heat from the gun
 	heat = approach(heat, 0.0f, heat*0.015f);
 	
+	//fire the gun
 	if (input->mouseDown(0) && ofGetElapsedTimeMillis() > lastShootTime + shootPeriod && heat < 100.0f && !overheated)
 	{
+		//spawn the bullet
 		Bullet* bullet = new Bullet(ents->rm->getImage("images\\bullet2.png"));
 		bullet->setVel(ofVec2f(shootSpeed, 0.0f).rotate(ang));
 		bullet->setAng(ang);
 		bullet->setPos(toWorld(ofVec2f(32.0f, 0.0f)));
 		bullet->setOwner(this);
 
+		//muzzle smoke
 		Particle* shootPuff = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
 		shootPuff->setVel(ofVec2f(ofRandomf() * 5.0f, -20.0f + ofRandomf() * 10.0f));
 		shootPuff->setAng(ofRandomf()*180.0f);
@@ -111,18 +122,23 @@ void Player::update()
 		shootPuff->setAngVel(30.0f);
 		ents->add(shootPuff, LAYER_FG_BOTTOM);
 
+		//viewpunch to make it look powerful
 		ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * 8.0f);
 
+		//actually add the bullet to the entity system now (this makes it appear on top of the smoke)
 		ents->add(bullet, LAYER_FG_BOTTOM);
 
+		//play the firing sound
 		//ents->rm->getSound("sounds\\rac_fire1.wav")->play();
 		ents->rm->playSoundLoop("soundloops\\shootloop_100sp.wav");
 
+		//increase the gun heat
 		heat += 3.3f;
 
 		lastShootTime = ofGetElapsedTimeMillis();
 	}
 	
+	//if the heat is too high, play a warning
 	if (heat > 80.0f)
 	{
 		ents->rm->playSoundLoop("soundloops\\caution2.wav");
@@ -132,12 +148,14 @@ void Player::update()
 		ents->rm->stopSoundLoop("soundloops\\caution2.wav");
 	}
 
+	//if the heat has hit the thresholdl, it has overheated
 	if (heat >= 100.0f)
 	{
 		overheated = true;
 		ents->rm->playSoundLoop("soundloops\\damagealarm.wav");
 	}
 
+	//overheating effects and end overheating when heat is low enough
 	if (overheated)
 	{
 		Particle* overheatPuff = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
@@ -159,17 +177,22 @@ void Player::update()
 		}
 	}
 	
+	//stop the shoot sound loop if we are not firing or cannot fire.
 	if (!input->mouseDown(0) || overheated)
 	{
 		ents->rm->stopSoundLoop("soundloops\\shootloop_100sp.wav");
 	}
 
+	//if we are moving forwards fast enough, activate afterburner effects
 	if (targetPos.y > pos.y + 42.0f)
 	{
+		//afterburner sound
 		ents->rm->playSoundLoop("soundloops\\afterburner.wav");
 
+		//afterburner viewpunch so it looks powerful
 		ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * 5.0f);
 
+		//the flames on the engines
 		Particle* burner1 = new Particle(ents->rm->getImage("images\\bang32_1.png"));
 		burner1->setVel(getVel()*0.9f);
 		burner1->setAng(ofRandomf()*180.0f);
@@ -196,6 +219,7 @@ void Player::update()
 		burner2->setColor(ofColor::orange);
 		ents->add(burner2, LAYER_FG_BOTTOM);
 
+		//engine smoke
 		Particle* enginePuff1 = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
 		enginePuff1->setVel(ofVec2f(ofRandomf() * 2.0f, -75.0f + ofRandomf() * 25.0f));
 		enginePuff1->setAng(ofRandomf()*180.0f);

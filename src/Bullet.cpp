@@ -40,6 +40,7 @@ void Bullet::update()
 	*/
 
 	//DANGEROUS. only okay because the return
+	//Find all enemies, and see if we are touching any.
 	for (size_t i = 0; i < ents->entities[LAYER_FG_MID].size(); ++i)
 	{
 		Entity* curEnt = ents->entities[LAYER_FG_MID][i];
@@ -47,9 +48,11 @@ void Bullet::update()
 		{
 			if (pos.squareDistance(curEnt->pos) < 1024.0f)
 			{
+				//Assume we are owned by a player and increase their score.
 				((Player*)owner)->score += (int)curEnt->getVel().lengthSquared();
 				((Player*)owner)->enemiesKilled++;
 
+				//Play a close explosion sound if the enemy is close, distant if not.
 				if (pos.lengthSquared() < 600.0f * 600.0f)
 				{
 					ents->rm->getSound("sounds\\explosion_generic_small_close_0" + std::to_string((rand() % 3) + 1) + ".wav")->play();
@@ -59,11 +62,12 @@ void Bullet::update()
 					ents->rm->getSound("sounds\\explosion_generic_small_distant_0" + std::to_string((rand() % 3) + 1) + ".wav")->play();
 				}
 
+				//make it so the viewpunch is more intense the closer the explosion is to the player.
 				ofVec2f diff = owner->getPos() - curEnt->getPos();
 				//ents->view->posViewPunch(((diff.normalized() * 30000.0f) / (diff.length() + 0.1f)) + ofVec2f(ofRandomf(), ofRandomf()) * 0.65f);
-
 				ents->view->posViewPunch(ofVec2f(ofRandomf(), ofRandomf()) * (20000.0f) / (diff.length() + 0.1f));
 
+				//explosion particle effects.
 				Particle* lingeringPuff = new Particle(ents->rm->getImage("images\\smokepuff1.png"));
 				lingeringPuff->applyForce(ofVec2f(ofRandomf() * 5.0f, -15.0f + ofRandomf() * 5.0f));
 				lingeringPuff->setAng(ofRandomf()*180.0f);
@@ -118,7 +122,7 @@ void Bullet::update()
 					ents->add(debris, LAYER_FG_BOTTOM);
 				}
 				
-
+				//remove both the bullet and the enemy.
 				curEnt->remove();
 				remove();
 				return;
