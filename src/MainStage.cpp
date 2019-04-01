@@ -53,7 +53,7 @@ void MainStage::update()
 	if (player->isDead() && gameOver == false)
 	{
 		gameOverTime = ofGetElapsedTimeMillis();
-		SlowText* slowText = new SlowText("KIA above the Bering Sea\nScore :" + std::to_string(player->getScore())+"\nAerial kills: " + std::to_string(player->getEnemiesKilled()) + "\nSurvived for " + std::to_string((gameOverTime - gameStartTime)/1000) + " seconds.\nClick to return to menu.", 75);
+		SlowText* slowText = new SlowText("KIA above the Bering Sea\nScore: " + std::to_string(player->getScore())+"\nAerial kills: " + std::to_string(player->getEnemiesKilled()) + "\nSurvived for " + std::to_string((gameOverTime - gameStartTime)/1000) + " seconds.\nClick to return to menu.", 75);
 		slowText->setPos(ofVec2f(-100.0f, 0.0f));
 		slowText->lifespan = -1;
 		ents->add(slowText, LAYER_FG_TOP);
