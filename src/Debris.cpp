@@ -1,5 +1,9 @@
 #include "Debris.h"
 
+//Alan Duong, 03/31/19
+//Debris, typically emitted during explosions.
+//They leave behind a smoke trail.
+
 void Debris::update()
 {
 	Sprite::update();

@@ -1,5 +1,8 @@
 #include "SlowText.h"
 
+//Alan Duong, 03/31/19
+//An entity that prints text onto the screen slowly and makes typewriter sounds.
+
 SlowText::SlowText(std::string _text, int _period)
 {
 	text = _text;

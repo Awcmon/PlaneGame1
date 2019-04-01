@@ -1,6 +1,9 @@
 #include "Enemy.h"
 #include "Player.h"
 
+//Alan Duong, 03/31/19
+//The enemies that kill and are killed by the player. In this game, they are the enemy planes.
+
 Enemy::Enemy()
 {
 	setID("enemy");

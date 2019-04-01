@@ -11,6 +11,9 @@
 #include "MainStage.h"
 #include "MenuState.h"
 
+//Alan Duong, 03/31/19
+//Main app class.
+
 class ofApp : public ofBaseApp{
 
 	public:

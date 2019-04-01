@@ -1,5 +1,8 @@
 #pragma once
 
+//Alan Duong, 03/31/19
+//The player.
+
 #include "Sprite.h"
 #include "Input.h"
 #include "util.h"

@@ -4,6 +4,9 @@
 #include "Camera.h"
 #include <array>
 
+//Alan Duong, 03/31/19
+//A class to make handling input easier.
+
 class Input
 {
 	ofVec2f mPos;

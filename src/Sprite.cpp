@@ -1,5 +1,8 @@
 #include "Sprite.h"
 
+//Alan Duong, 03/31/19
+//An entity that has an image, animated or not.
+
 Sprite::Sprite()
 {
 	hasImage = false;

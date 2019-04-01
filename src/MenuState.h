@@ -1,5 +1,8 @@
 #pragma once
 
+//Alan Duong, 03/31/19
+//Gamestate for the main menu
+
 #include "GameState.h"
 #include "MainStage.h"
 

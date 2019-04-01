@@ -1,5 +1,8 @@
 #include "Input.h"
 
+//Alan Duong, 03/31/19
+//A class to make handling input easier.
+
 Input::Input()
 {
 	mPos = ofVec2f(0.0f, 0.0f);

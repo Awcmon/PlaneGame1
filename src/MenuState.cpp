@@ -1,5 +1,8 @@
 #include "MenuState.h"
 
+//Alan Duong, 03/31/19
+//Gamestate for the main menu
+
 void MenuState::setup()
 {
 

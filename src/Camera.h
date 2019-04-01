@@ -1,5 +1,8 @@
 #pragma once
 
+//Alan Duong, 03/31/19
+//This is a wrapper for ofCamera to help do screenshake.
+
 #include "ofMain.h"
 #include "util.h"
 

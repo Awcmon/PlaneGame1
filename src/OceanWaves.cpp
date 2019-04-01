@@ -1,6 +1,9 @@
 #include "Sprite.h"
 #include "OceanWaves.h"
 
+//Alan Duong, 03/31/19
+//Entities that make the blue background look a bit more like an ocean.
+
 OceanWaves::OceanWaves()
 {
 	thickness = 4.0f;

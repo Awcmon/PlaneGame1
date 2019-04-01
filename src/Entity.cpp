@@ -1,5 +1,9 @@
 #include "Entity.h"
 
+//Alan Duong, 03/31/19
+//An entity class from which all game objects inherit from.
+//The physics stuff is done here.
+
 Entity::Entity(std::string _id, ofVec2f _pos, float _scale, float _ang, ofVec2f _vel)
 {
 	id = _id;
@@ -28,7 +32,7 @@ void Entity::update()
 	}
 
 	//float dt = 1.0 / ofGetFrameRate();
-	float dt = 1.0f;
+	float dt = 1.0f; //we are capped to 60 fps anyways
 
 	pos += vel * dt;
 	vel += accel * dt;

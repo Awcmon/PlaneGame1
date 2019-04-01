@@ -1,5 +1,9 @@
 #include "ResourceManager.h"
 
+//Alan Duong, 03/31/19
+//Loads resources and makes it easier to access and share them.
+//We only need to load an image and sound once.
+
 ResourceManager::ResourceManager()
 {
 	ofDirectory imagesDir("images");

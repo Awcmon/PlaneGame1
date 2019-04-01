@@ -1,6 +1,9 @@
 #include "MainStage.h"
 #include "MenuState.h"
 
+//Alan Duong, 03/31/19
+//Gamestate for the main stage of the game
+
 void MainStage::setup()
 {
 	player = new Player(rm->getImage("images\\f14_sheet.png"), input);

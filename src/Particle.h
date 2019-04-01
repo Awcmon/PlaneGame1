@@ -1,5 +1,8 @@
 #pragma once
 
+//Alan Duong, 03/31/19
+//Entities that change scale and alpha over time, typically used for particles.
+
 #include "Sprite.h"
 
 class Particle : public Sprite

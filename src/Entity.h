@@ -1,5 +1,9 @@
 #pragma once
 
+//Alan Duong, 03/31/19
+//An entity class from which all game objects inherit from.
+//The physics stuff is done here.
+
 #include <vector>
 #include <string>
 #include <unordered_set>

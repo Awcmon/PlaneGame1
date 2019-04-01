@@ -1,5 +1,8 @@
 #include "Camera.h"
 
+//Alan Duong, 03/31/19
+//This is a wrapper for ofCamera to help do screenshake.
+
 View::View()
 {
 	punchPos = ofVec2f(0.0f, 0.0f);

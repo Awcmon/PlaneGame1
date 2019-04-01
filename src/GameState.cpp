@@ -1,5 +1,8 @@
 #include "GameState.h"
 
+//Alan Duong, 03/31/19
+//Represents a game state (Main Menu, Main Stage, etc).
+
 void GameState::init(EntitySystem * _ents, ResourceManager * _rm, Input * _input, View * _view, GameState** _curGameState)
 {
 	ents = _ents;

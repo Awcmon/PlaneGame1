@@ -1,5 +1,8 @@
 #pragma once
 
+//Alan Duong, 03/31/19
+//Entities that make the blue background look a bit more like an ocean.
+
 #include "ofMain.h"
 #include "Sprite.h"
 

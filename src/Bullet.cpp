@@ -1,6 +1,10 @@
 
 #include "Bullet.h"
 
+//Alan Duong, 03/31/19
+//This is a bullet that the player shoots.
+//It destroys enemies.
+
 Bullet::Bullet()
 {
 	setID("bullet");

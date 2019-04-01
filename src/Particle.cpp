@@ -1,5 +1,8 @@
 #include "Particle.h"
 
+//Alan Duong, 03/31/19
+//Entities that change scale and alpha over time, typically used for particles.
+
 Particle::Particle(ofImage* _image)
 {
 	setImage(_image);

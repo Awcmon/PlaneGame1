@@ -1,5 +1,8 @@
 #pragma once
 
+//Alan Duong, 03/31/19
+//Represents a game state (Main Menu, Main Stage, etc).
+
 #include "ofMain.h"
 #include "Entity.h"
 #include "Input.h"

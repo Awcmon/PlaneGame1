@@ -1,5 +1,8 @@
 #pragma once
 
+//Alan Duong, 03/31/19
+//An entity that prints text onto the screen slowly and makes typewriter sounds.
+
 #include "Entity.h"
 
 class SlowText : public Entity

@@ -1,5 +1,8 @@
 #include "ofApp.h"
 
+//Alan Duong, 03/31/19
+//Main app class.
+
 //Engine Features:
 //RESOLVED: Implement a resource manager
 //RESOLVED: Implement a proper coordinate system + camera
@@ -32,14 +35,14 @@
 //RESOLVED: Implement explosions
 //RESOLVED: Early warning HUD
 //RESOLVED: Add lingering smoke, debris, to explosions
-//TODO: Explosion screenshake
+//RESOLVED: Explosion screenshake
 //RESOLVED: Make explosions dependent on enemy velocity?
 //TODO: Homing missile enemy
 //RESOLVED: Add enemy flyby sound
-//TODO: Implement player gun overheating
+//RESOLVED: Implement player gun overheating
 //TODO: Make enemies shoot when close
-//TODO: Implement player getting killed
-//TODO: Ways to get back to main menu
+//RESOLVED: Implement player getting killed
+//RESOLVED: Ways to get back to main menu
 
 //Optimizations:
 //TODO: Implement listener systems for more things rather than the mess currently

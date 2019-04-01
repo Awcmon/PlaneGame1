@@ -1,5 +1,8 @@
 #pragma once
 
+//Alan Duong, 03/31/19
+//A set of utility functions.
+
 #include <math.h>
 #include <algorithm>
 #include <ofMain.h>
