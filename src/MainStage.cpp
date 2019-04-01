@@ -53,7 +53,7 @@ void MainStage::update()
 	if (player->isDead() && gameOver == false)
 	{
 		gameOverTime = ofGetElapsedTimeMillis();
-		SlowText* slowText = new SlowText("KIA above the Bering Sea\nScore :" + std::to_string(player->getScore())+"\nSurvived for " + std::to_string((gameOverTime - gameStartTime)/1000) + " seconds.\nClick to return to menu.", 75);
+		SlowText* slowText = new SlowText("KIA above the Bering Sea\nScore :" + std::to_string(player->getScore())+"\nAerial kills: " + std::to_string(player->getEnemiesKilled()) + "\nSurvived for " + std::to_string((gameOverTime - gameStartTime)/1000) + " seconds.\nClick to return to menu.", 75);
 		slowText->setPos(ofVec2f(-100.0f, 0.0f));
 		slowText->lifespan = -1;
 		ents->add(slowText, LAYER_FG_TOP);
@@ -67,7 +67,7 @@ void MainStage::update()
 		{
 			unitPhase = 2;
 			SlowText* slowText = new SlowText("DEFCON 2", 75);
-			slowText->setPos(ofVec2f(-100.0f, 0.0f));
+			slowText->setPos(ofVec2f(-100.0f, 30.0f));
 			slowText->lifespan = 3000;
 			ents->add(slowText, LAYER_FG_TOP);
 			phase = 1;
@@ -77,7 +77,7 @@ void MainStage::update()
 		{
 			unitPhase = 4;
 			SlowText* slowText = new SlowText("DEFCON 1", 75);
-			slowText->setPos(ofVec2f(-100.0f, 0.0f));
+			slowText->setPos(ofVec2f(-100.0f, 30.0f));
 			slowText->lifespan = 3000;
 			ents->add(slowText, LAYER_FG_TOP);
 			phase = 2;
@@ -200,9 +200,9 @@ void MainStage::draw()
 	ofDrawBitmapString("Frame Rate: " + std::to_string(ofGetFrameRate()), ofGetWindowWidth() / 2 - 170, ofGetWindowHeight() / 2 - 15);
 	ofDrawBitmapString("Entities: " + std::to_string(ents->size()), ofGetWindowWidth() / 2 - 170, ofGetWindowHeight() / 2 - 35);
 
-	ofDrawBitmapString("Score: " + std::to_string(player->score), -ofGetWindowWidth() / 2, ofGetWindowHeight() / 2 - 15);
-
 	if (player->isDead()) { return; }
+
+	ofDrawBitmapString("Score: " + std::to_string(player->score), -ofGetWindowWidth() / 2, ofGetWindowHeight() / 2 - 15);
 
 	ofNoFill();
 	ofSetColor(ofColor::white, 100);

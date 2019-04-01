@@ -20,6 +20,7 @@ public:
 	uint64_t getScore();
 	void setScore(uint64_t _score);
 	void setDead(bool _dead);
+	uint64_t getEnemiesKilled();
 
 	ofVec2f targetPos;
 	uint64_t lastShootTime;
@@ -32,4 +33,5 @@ public:
 	bool dead;
 
 	uint64_t score;
+	uint64_t enemiesKilled;
 };

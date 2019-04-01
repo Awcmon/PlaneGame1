@@ -16,6 +16,7 @@ Player::Player(ofImage* _image, Input* _input)
 	anims["left"] = { 100000000,{ 2 } };
 
 	score = 0;
+	enemiesKilled = 0;
 
 	heat = 0.0f;
 	overheated = false;
@@ -247,4 +248,9 @@ void Player::setScore(uint64_t _score)
 void Player::setDead(bool _dead)
 {
 	dead = _dead;
+}
+
+uint64_t Player::getEnemiesKilled()
+{
+	return enemiesKilled;
 }
