@@ -26,7 +26,7 @@ void MainStage::setup()
 	white->setColor(ofColor::black);
 	ents->add(white, LAYER_FG_TOP);
 
-	SlowText* slowText = new SlowText("International Waters\nBering Sea\nMay 3rd, 1984\n1800 hours", 75);
+	SlowText* slowText = new SlowText("International Waters\nBering Sea\nMay 3rd, 1984\n1800 hours\nDEFCON 3", 75);
 	slowText->setPos(ofVec2f(-100.0f, 0.0f));
 	slowText->lifespan = 8500;
 	ents->add(slowText, LAYER_FG_TOP);
@@ -42,6 +42,10 @@ void MainStage::setup()
 	gameOver = false;
 	gameOverTime = 0;
 	gameStartTime = ofGetElapsedTimeMillis();
+
+	phase = 0;
+	unitPhase = 1;
+	nextPhaseTime = ofGetElapsedTimeMillis() + 20000;
 }
 
 void MainStage::update()
@@ -56,11 +60,35 @@ void MainStage::update()
 		gameOver = true;
 	}
 
+	//handle phase change
+	if (phase < 2 && ofGetElapsedTimeMillis() > nextPhaseTime)
+	{
+		if(phase == 0)
+		{
+			unitPhase = 2;
+			SlowText* slowText = new SlowText("DEFCON 2", 75);
+			slowText->setPos(ofVec2f(-100.0f, 0.0f));
+			slowText->lifespan = 3000;
+			ents->add(slowText, LAYER_FG_TOP);
+			phase = 1;
+			nextPhaseTime = ofGetElapsedTimeMillis() + 15000;
+		}
+		else if (phase == 1)
+		{
+			unitPhase = 4;
+			SlowText* slowText = new SlowText("DEFCON 1", 75);
+			slowText->setPos(ofVec2f(-100.0f, 0.0f));
+			slowText->lifespan = 3000;
+			ents->add(slowText, LAYER_FG_TOP);
+			phase = 2;
+		}
+	}
+
 	if (ofGetElapsedTimeMillis() > nextEnemySpawnTime && !player->isDead())
 	{
-		int r = rand() % 4;
+		int r = rand() % unitPhase;
 
-		if (r == 0) //top
+		if (r == 1) //top
 		{
 			Enemy* enemy = new Enemy();
 			enemy->setImage(rm->getImage("images\\enemy.png"));
@@ -71,7 +99,7 @@ void MainStage::update()
 
 			nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(750.0f);
 		}
-		else if (r == 1) //bottom
+		else if (r == 0) //bottom
 		{
 			Enemy* enemy = new Enemy();
 			enemy->setImage(rm->getImage("images\\enemy.png"));
