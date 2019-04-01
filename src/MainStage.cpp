@@ -55,6 +55,7 @@ void MainStage::setup()
 	phase = 0;
 	unitPhase = 1;
 	nextPhaseTime = ofGetElapsedTimeMillis() + 20000;
+	spawnPeriod = 1500;
 }
 
 void MainStage::update()
@@ -81,6 +82,7 @@ void MainStage::update()
 			slowText->lifespan = 3000;
 			ents->add(slowText, LAYER_FG_TOP);
 			phase = 1;
+			spawnPeriod = 1000;
 			nextPhaseTime = ofGetElapsedTimeMillis() + 15000;
 		}
 		else if (phase == 1)
@@ -90,6 +92,7 @@ void MainStage::update()
 			slowText->setPos(ofVec2f(-100.0f, 30.0f));
 			slowText->lifespan = 3000;
 			ents->add(slowText, LAYER_FG_TOP);
+			spawnPeriod = 750;
 			phase = 2;
 		}
 	}
@@ -108,7 +111,7 @@ void MainStage::update()
 			enemy->setTarget(player);
 			ents->add(enemy, LAYER_FG_MID);
 
-			nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(750.0f);
+			nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(spawnPeriod);
 		}
 		else if (r == 0) //bottom
 		{
@@ -121,7 +124,7 @@ void MainStage::update()
 			enemy->setLifespan(7000);
 			ents->add(enemy, LAYER_FG_MID);
 
-			nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(750.0f);
+			nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(spawnPeriod);
 		}
 		else if (r == 2) //right
 		{
@@ -134,7 +137,7 @@ void MainStage::update()
 			enemy->setLifespan(7000);
 			ents->add(enemy, LAYER_FG_MID);
 
-			nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(750.0f);
+			nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(spawnPeriod);
 		}
 		else if (r == 3) //left
 		{
@@ -147,7 +150,7 @@ void MainStage::update()
 			enemy->setLifespan(7000);
 			ents->add(enemy, LAYER_FG_MID);
 
-			nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(750.0f);
+			nextEnemySpawnTime = ofGetElapsedTimeMillis() + (int)ofRandom(spawnPeriod);
 		}
 	}
 

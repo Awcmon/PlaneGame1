@@ -45,4 +45,6 @@ public:
 	int phase;
 	int unitPhase;
 	uint64_t nextPhaseTime;
+
+	int spawnPeriod;
 };
